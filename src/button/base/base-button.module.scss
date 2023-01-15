@@ -1,0 +1,39 @@
+// Base button styling
+.baseButton {
+    padding: $spacing-2 $spacing-4;
+    border-radius: $border-radius-sm;
+    border: 1px solid transparent;
+    cursor: pointer;
+    width: fit-content;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: $spacing-2;
+    justify-content: center;
+
+    // When button is disabled Global Styling for all buttons
+    &[aria-disabled='true'] {
+        cursor: default;
+        background-color: var(--neutral100);
+        border: 1px solid var(--neutral200);
+        color: var(--neutral600);
+    }
+}
+
+// Button icons
+.iconWrapper {
+    height: 16px;
+    width: auto;
+
+    // Align icon in center of wrapper
+    display: flex;
+    flex-direction: row;
+    justify-self: center;
+    align-items: center;
+}
+
+// Make button occupy full width
+.fullWidth {
+    width: 100%;
+}

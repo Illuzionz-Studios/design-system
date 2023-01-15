@@ -1,0 +1,23 @@
+.label-xl {
+    @include label-xl;
+}
+
+.label-lg {
+    @include label-lg;
+}
+
+.label-md {
+    @include label-md;
+}
+
+.label-sm {
+    @include label-sm;
+}
+
+.label-xs {
+    @include label-xs;
+}
+
+.button-text {
+    @include button-text;
+}

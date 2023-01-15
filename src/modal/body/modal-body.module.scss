@@ -1,0 +1,32 @@
+.modalBody {
+    // Allow scrolling in body
+    overflow-y: scroll;
+    max-height: 60vh;
+
+    padding: $spacing-7;
+    background-color: var(--white);
+
+    /* width */
+    &::-webkit-scrollbar {
+        width: 8px;
+        display: inline;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: transparent;
+        margin-top: rem(4);
+        margin-bottom: rem(4);
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        border-radius: $border-radius-lg;
+        background: var(--neutral200);
+    }
+
+    /* Handle on hover */
+    &::-webkit-scrollbar-thumb:hover {
+        background: var(--neutral100);
+    }
+}

@@ -1,0 +1,9 @@
+.fullSection {
+    position: relative;
+    display: flex;
+    height: var(--vh);
+    width: 100vw;
+    flex-direction: column;
+    margin: auto auto;
+    justify-content: flex-start;
+}
