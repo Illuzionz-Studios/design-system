@@ -15,8 +15,6 @@ export const IconButton: React.FC<ButtonProps> = ({
     disabled,
     ...rest
 }) => {
-    const { theme, toggleTheme } = useTheme();
-
     return (
         <motion.button
             className={classNames(styles.baseButton)}
