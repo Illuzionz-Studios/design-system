@@ -1,4 +1,4 @@
-import '@/styles/globals.css';
+import 'styles/globals.scss';
 import '@illuzionz-studios/design-system/styles';
 import '@illuzionz-studios/design-system/main-styles';
 import '@fontsource/inter/400.css';

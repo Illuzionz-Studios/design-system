@@ -1,5 +1,5 @@
 {
-    "name": "illuzionz-studios-design-system",
+    "name": "illuzionz-studios",
     "private": true,
     "workspaces": [
         "packages/*"

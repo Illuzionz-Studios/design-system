@@ -18,8 +18,6 @@ export const Button: React.FC<ButtonProps> = ({
     colorScheme,
     ...rest
 }) => {
-    const { theme } = useTheme();
-
     // Different color styles
     let buttonVariantStyles: BaseButtonProps = {};
 
@@ -64,6 +62,10 @@ export const Button: React.FC<ButtonProps> = ({
         <BaseButton
             transition={{ type: 'spring', bounce: 0.6 }}
             className={className}
+            paddingTop={2}
+            paddingBottom={2}
+            paddingLeft={4}
+            paddingRight={4}
             {...buttonVariantStyles}
             {...rest}
         >

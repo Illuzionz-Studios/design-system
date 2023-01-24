@@ -1,28 +1,26 @@
-import classNames from 'classnames';
-import { HTMLMotionProps, motion } from 'framer-motion';
+import { HTMLMotionProps } from 'framer-motion';
 import { ReactNode } from 'react';
-import { Box } from '../../layout/box';
-import { useTheme } from '../../theme';
-import styles from './icon-button.module.scss';
+import { cssColorShade } from '../../theme';
+import { BaseButton, BaseButtonProps } from '../base/base-button';
 
 type ButtonProps = {
     icon: ReactNode;
-    disabled?: boolean;
-} & HTMLMotionProps<'button'>;
+} & BaseButtonProps;
 
-export const IconButton: React.FC<ButtonProps> = ({
-    icon,
-    disabled,
-    ...rest
-}) => {
+export const IconButton: React.FC<ButtonProps> = ({ icon, ...rest }) => {
     return (
-        <motion.button
-            className={classNames(styles.baseButton)}
-            disabled={disabled}
-            aria-disabled={disabled}
+        <BaseButton
+            transition={{ type: 'spring', bounce: 0.6 }}
+            className="test"
+            padding={2}
+            background={undefined}
+            color="neutral800"
+            borderColor="neutral200"
+            startIcon={icon}
+            whileHover={{
+                borderColor: cssColorShade('neutral', 300),
+            }}
             {...rest}
-        >
-            <Box className={styles.iconWrapper}>{icon}</Box>
-        </motion.button>
+        />
     );
 };

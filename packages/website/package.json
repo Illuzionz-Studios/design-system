@@ -1,5 +1,5 @@
 {
-    "name": "website",
+    "name": "@illuzionz-studios/website",
     "version": "0.1.0",
     "private": true,
     "scripts": {
@@ -9,21 +9,25 @@
         "lint": "next lint"
     },
     "dependencies": {
+        "@fontsource/inter": "^4.5.14",
+        "@fontsource/poppins": "^4.5.10",
         "@illuzionz-studios/design-system": "*",
         "@next/font": "13.1.4",
         "@types/node": "18.11.18",
         "@types/react": "18.0.27",
         "@types/react-dom": "18.0.10",
+        "classnames": "^2.3.2",
         "eslint": "8.32.0",
         "eslint-config-next": "13.1.4",
         "next": "13.1.4",
         "react": "18.2.0",
         "react-dom": "18.2.0",
         "typescript": "4.9.4",
-        "@fontsource/inter": "^4.5.14",
-        "@fontsource/poppins": "^4.5.10",
-        "classnames": "^2.3.2",
         "framer-motion": "^8.0.2",
         "react-icons": "^4.6.0"
+    },
+    "devDependencies": {
+        "sass": "^1.57.1",
+        "scss": "^0.2.4"
     }
 }

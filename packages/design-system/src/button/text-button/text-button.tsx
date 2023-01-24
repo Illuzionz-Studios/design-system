@@ -1,48 +1,30 @@
-import classNames from 'classnames';
-import { HTMLMotionProps, motion } from 'framer-motion';
-import { ReactNode } from 'react';
-import { Box } from '../../layout/box';
-import { useTheme } from '../../theme';
-import { Label } from '../../typography';
-import styles from './text-button.module.scss';
+import { ColorValues, cssColorShade } from '../../theme';
+import { BaseButton, BaseButtonProps } from '../base/base-button';
 
 type ButtonProps = {
-    color?: string;
-    startIcon?: ReactNode;
-    endIcon?: ReactNode;
-    disabled?: boolean;
-    fullWidth?: boolean;
-} & HTMLMotionProps<'button'>;
+    colorScheme?: ColorValues;
+} & BaseButtonProps;
 
 export const TextButton: React.FC<ButtonProps> = ({
     children,
-    color,
-    startIcon,
-    endIcon,
-    disabled,
-    fullWidth,
+    colorScheme = 'primary',
     ...rest
 }) => {
-    const { theme, toggleTheme } = useTheme();
-
-    const colors = {
-        color: color ? 'var(--' + color + ')' : undefined,
-    };
-
     return (
-        <motion.button
-            style={colors}
-            className={classNames(
-                styles.baseButton,
-                fullWidth ? styles.fullWidth : ''
-            )}
-            disabled={disabled}
-            aria-disabled={disabled}
+        <BaseButton
+            transition={{ type: 'spring', bounce: 0.6 }}
+            paddingTop={1}
+            paddingBottom={1}
+            paddingLeft={4}
+            paddingRight={4}
+            background="transparent"
+            color={colorScheme + '600'}
+            whileHover={{
+                background: cssColorShade(colorScheme, 100),
+            }}
             {...rest}
         >
-            {startIcon && <Box className={styles.iconWrapper}>{startIcon}</Box>}
-            <Label variant="button">{children}</Label>
-            {endIcon && <Box className={styles.iconWrapper}>{endIcon}</Box>}
-        </motion.button>
+            {children}
+        </BaseButton>
     );
 };
