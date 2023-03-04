@@ -109,7 +109,9 @@ $font-2: 'Inter', sans-serif;
 */
 @mixin text-gradient {
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: transparent;
 }
 
 /*
