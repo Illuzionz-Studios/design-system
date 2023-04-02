@@ -53,7 +53,11 @@ export default function Home() {
                                 Buttons
                             </Heading>
                             <Flex direction="row" gap={4} alignItems="center">
-                                <Button variant="primary" colorScheme="primary">
+                                <Button
+                                    variant="primary"
+                                    colorScheme="primary"
+                                    size="sm"
+                                >
                                     Primary Button
                                 </Button>
                                 <Button
@@ -65,6 +69,7 @@ export default function Home() {
                                 <Button
                                     variant="tertiary"
                                     colorScheme="primary"
+                                    size="lg"
                                 >
                                     Tertiary Button
                                 </Button>

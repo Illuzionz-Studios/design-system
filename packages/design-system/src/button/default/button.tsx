@@ -8,13 +8,21 @@ type ButtonVariants = 'primary' | 'secondary' | 'tertiary';
 type ButtonProps = {
     className?: CSSProperties | string;
     variant: ButtonVariants;
+    size?: 'sm' | 'md' | 'lg';
     colorScheme?: ColorValues;
 } & BaseButtonProps;
+
+const sizeDef = {
+    sm: 1,
+    md: 2,
+    lg: 3,
+};
 
 export const Button: React.FC<ButtonProps> = ({
     children,
     className,
     variant,
+    size = 'md',
     colorScheme,
     ...rest
 }) => {
@@ -34,12 +42,11 @@ export const Button: React.FC<ButtonProps> = ({
         };
     } else if (variant === 'secondary') {
         let focusStyles = {
-            background: 'transparent',
+            background: cssColorShade(colorScheme, 200),
         };
 
         buttonVariantStyles = {
             background: colorScheme + '100',
-            borderColor: colorScheme + '200',
             color: colorScheme + '600',
             whileHover: focusStyles,
             whileFocus: focusStyles,
@@ -62,8 +69,8 @@ export const Button: React.FC<ButtonProps> = ({
         <BaseButton
             transition={{ type: 'spring', bounce: 0.6 }}
             className={className}
-            paddingTop={2}
-            paddingBottom={2}
+            paddingTop={sizeDef[size]}
+            paddingBottom={sizeDef[size]}
             paddingLeft={4}
             paddingRight={4}
             {...buttonVariantStyles}

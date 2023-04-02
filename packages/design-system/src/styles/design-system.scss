@@ -68,30 +68,61 @@ html {
     scroll-behavior: smooth;
 
     // Default XL font size
-    font-size: 1.4rem;
+    font-size: calc(0.625rem + 0.41666666666666663vw);
 }
 
-// Dynamic screen scaling
+@media screen and (max-width: 1920px) {
+    html {
+        font-size: calc(0.625rem + 0.41666666666666674vw);
+    }
+}
+@media screen and (max-width: 1440px) {
+    html {
+        font-size: calc(-0.12500000000000022rem + 1.2500000000000002vw);
+    }
+}
 @media screen and (max-width: 1280px) {
     html {
-        font-size: calc(0.5713667820069206rem + 0.6920415224913493vw);
+        font-size: calc(0.44444444444444453rem + 0.6944444444444443vw);
     }
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 992px) {
     html {
-        font-size: calc(0.5695067264573992rem + 0.896860986547085vw);
+        font-size: calc(0.4655172413793104rem + 0.8620689655172413vw);
     }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 760px) {
     html {
-        font-size: calc(0.6666666666666667rem + 0.6944444444444444vw);
+        font-size: calc(0.6607142857142857rem + 0.7142857142857143vw);
     }
 }
 @media screen and (max-width: 480px) {
     html {
-        font-size: calc(0.7496085594989561rem + 0.6263048016701461vw);
+        font-size: calc(0.7494780793319415rem + 0.8350730688935282vw);
     }
 }
+
+// // Dynamic screen scaling
+// @media screen and (max-width: 1280px) {
+//     html {
+//         font-size: calc(0.5713667820069206rem + 0.6920415224913493vw);
+//     }
+// }
+// @media screen and (max-width: 991px) {
+//     html {
+//         font-size: calc(0.5695067264573992rem + 0.896860986547085vw);
+//     }
+// }
+// @media screen and (max-width: 768px) {
+//     html {
+//         font-size: calc(0.6666666666666667rem + 0.6944444444444444vw);
+//     }
+// }
+// @media screen and (max-width: 480px) {
+//     html {
+//         font-size: calc(0.7496085594989561rem + 0.6263048016701461vw);
+//     }
+// }
 
 body {
     // Make sure no horizontal scroll
