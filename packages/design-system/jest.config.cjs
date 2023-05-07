@@ -3,8 +3,8 @@ module.exports = {
     preset: 'ts-jest',
     testEnvironment: 'jest-environment-jsdom',
     moduleNameMapper: {
-        '\\.(css|less|scss|sss|styl)$':
-            '<rootDir>/node_modules/jest-css-modules',
+        '\\.(css|less|scss|sss|styl)$': 'babel-jest',
+        // '<rootDir>/node_modules/jest-css-modules',
     },
 
     setupFilesAfterEnv: [

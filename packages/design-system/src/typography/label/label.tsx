@@ -17,8 +17,6 @@ export const Label: React.FC<LabelProps> = ({
     color,
     ...rest
 }) => {
-    const { theme, toggleTheme } = useTheme();
-
     // Define styling
     const stylingName =
         variant === 'button' ? 'button-text' : 'label-' + variant;

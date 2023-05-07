@@ -46,43 +46,43 @@ export const Heading: React.FC<HeadingProps> = ({
             );
         case 'h2':
             return (
-                <motion.h1
+                <motion.h2
                     style={colors}
                     className={classNames(styles[stylingName], className)}
                     {...rest}
                 >
                     {children}
-                </motion.h1>
+                </motion.h2>
             );
         case 'h3':
             return (
-                <motion.h1
+                <motion.h3
                     style={colors}
                     className={classNames(styles[stylingName], className)}
                     {...rest}
                 >
                     {children}
-                </motion.h1>
+                </motion.h3>
             );
         case 'h4':
             return (
-                <motion.h1
+                <motion.h4
                     style={colors}
                     className={classNames(styles[stylingName], className)}
                     {...rest}
                 >
                     {children}
-                </motion.h1>
+                </motion.h4>
             );
         case 'h5':
             return (
-                <motion.h1
+                <motion.h5
                     style={colors}
                     className={classNames(styles[stylingName], className)}
                     {...rest}
                 >
                     {children}
-                </motion.h1>
+                </motion.h5>
             );
         default:
             return (

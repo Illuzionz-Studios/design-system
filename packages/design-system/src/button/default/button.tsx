@@ -67,7 +67,7 @@ export const Button: React.FC<ButtonProps> = ({
 
     return (
         <BaseButton
-            transition={{ type: 'spring', bounce: 0.6 }}
+            // transition={{ type: 'spring', bounce: 0.6 }}
             className={className}
             paddingTop={sizeDef[size]}
             paddingBottom={sizeDef[size]}

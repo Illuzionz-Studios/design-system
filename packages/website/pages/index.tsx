@@ -1,3 +1,4 @@
+import { useTheme } from '@illuzionz-studios/design-system';
 import {
     Badge,
     Button,
@@ -17,6 +18,7 @@ import { FaTimes } from 'react-icons/fa';
 export default function Home() {
     const [testFieldValue, setTestFieldValue] = useState('');
     const [checked, setChecked] = useState(false);
+    const { theme, toggleTheme } = useTheme();
 
     return (
         <>
@@ -57,6 +59,7 @@ export default function Home() {
                                     variant="primary"
                                     colorScheme="primary"
                                     size="sm"
+                                    onClick={() => toggleTheme()}
                                 >
                                     Primary Button
                                 </Button>

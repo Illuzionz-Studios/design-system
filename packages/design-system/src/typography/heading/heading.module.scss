@@ -18,6 +18,12 @@
     @include heading-2;
 }
 
+[data-theme='dark'] {
+    .heading-2 {
+        color: green;
+    }
+}
+
 .heading-2-regular {
     @include heading-2-regular;
 }

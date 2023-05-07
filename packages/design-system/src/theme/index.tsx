@@ -10,6 +10,28 @@ export const ThemeContext = createContext({
     toggleTheme: () => {},
 });
 
+const detectColorScheme = () => {
+    var theme = 'light'; //default to light
+
+    //local storage is used to override OS theme settings
+    if (localStorage.getItem('theme')) {
+        if (localStorage.getItem('theme') == 'dark') {
+            var theme = 'dark';
+        }
+    } else if (!window.matchMedia) {
+        //matchMedia method not supported
+        return false;
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        // OS theme setting detected as dark
+        var theme = 'dark';
+    }
+
+    //dark theme preferred, set document with a `data-theme` attribute
+    if (theme == 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+    }
+};
+
 export const ThemeProvider: React.FC = ({ children }) => {
     const [isDarkTheme, setIsDarkTheme] = useState(false);
 
@@ -17,12 +39,29 @@ export const ThemeProvider: React.FC = ({ children }) => {
         setIsDarkTheme((prev) => !prev);
     };
 
+    useEffect(() => {
+        // If local theme is set use that
+        if (localStorage.getItem('theme')) {
+            if (localStorage.getItem('theme') == 'dark') {
+                setIsDarkTheme(true);
+            }
+        } else if (!window.matchMedia) {
+            // Can't auto detect, default to light
+        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            // OS theme setting detected as dark
+            setIsDarkTheme(true);
+        }
+    }, []);
+
     // Update body class for css color variables
     useEffect(() => {
+        // Set theme in storage based on dark mode or not
         if (isDarkTheme) {
-            document.body.classList.add('darkTheme');
+            localStorage.setItem('theme', 'dark');
+            document.documentElement.setAttribute('data-theme', 'dark');
         } else {
-            document.body.classList.remove('darkTheme');
+            localStorage.setItem('theme', 'light');
+            document.documentElement.setAttribute('data-theme', 'light');
         }
     }, [isDarkTheme]);
 
