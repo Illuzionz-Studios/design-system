@@ -1,119 +1,136 @@
-/**
-* Extract RGB values from a color
+// Import colour scale
+@import 'color-scale.scss';
+
+/*
+* Defines the colour variables to be used throughout components.
+*
+* Naming Convention:
+* - Make variable name clear, you should know what it's used for just from the name
+* - Variable must start with 'color-'. So 'color-bg', or 'color-primary'.
+* - 
 */
-@function toRGB($color) {
-    @return '' + red($color) + ', ' + green($color) + ', ' + blue($color);
-}
 
-/**
-* Generate normal variable and RGB variable for color
-*/
-@mixin generateVars($name, $color) {
-    $rgb: toRGB($color);
-
-    --#{$name}: #{$color};
-    --#{$name + 'RGB'}: #{$rgb};
-}
-
+// Default (light theme)
 :root {
-    color-scheme: light;
+    // GENERAL COLOUR PALLETE
+
+    // Colors of background
+    --color-bg: var(--gray100);
+
+    // Colour pallete primary colours (for backgrounds)
+    --color-bg-primary: var(--primary500);
+    --color-bg-secondary: var(--secondary500);
+    --color-bg-tertiary: var(--tertiary500);
+    --color-bg-success: var(--success500);
+    --color-bg-warning: var(--warning500);
+    --color-bg-error: var(--error500);
+
+    // Primary text color
+    --color-text-primary: var(--black);
+    --color-text-secondary: var(--secondary500);
+    --color-text-tertiary: var(--tertiary500);
+    --color-text-success: var(--success500);
+    --color-text-warning: var(--warning500);
+    --color-text-error: var(--error500);
+
+    // Default background elevation
+    --color-elevation-1: var(--neutral100);
+    --color-elevation-2: var(--neutral200);
+    --color-elevation-3: var(--neutral300);
+    --color-elevation-4: var(--neutral400);
+
+    // Primary colours elevation
+    --color-elevation-primary-1: var(--primary100);
+    --color-elevation-primary-2: var(--primary200);
+    --color-elevation-primary-3: var(--primary300);
+    --color-elevation-primary-4: var(--primary400);
+
+    --color-elevation-secondary-1: var(--secondary100);
+    --color-elevation-secondary-2: var(--secondary200);
+    --color-elevation-secondary-3: var(--secondary300);
+    --color-elevation-secondary-4: var(--secondary400);
+
+    --color-elevation-tertiary-1: var(--tertiary100);
+    --color-elevation-tertiary-2: var(--tertiary200);
+    --color-elevation-tertiary-3: var(--tertiary300);
+    --color-elevation-tertiary-4: var(--tertiary400);
+
+    --color-elevation-success-1: var(--success100);
+    --color-elevation-success-2: var(--success200);
+    --color-elevation-success-3: var(--success300);
+    --color-elevation-success-4: var(--success400);
+
+    --color-elevation-warning-1: var(--warning100);
+    --color-elevation-warning-2: var(--warning200);
+    --color-elevation-warning-3: var(--warning300);
+    --color-elevation-warning-4: var(--warning400);
+
+    --color-elevation-error-1: var(--error100);
+    --color-elevation-error-2: var(--error200);
+    --color-elevation-error-3: var(--error300);
+    --color-elevation-error-4: var(--error400);
+
+    // MORE SPECIFIC COLOUR PALLETE
+
+    // Primary button colour
+    --color-button-primary: var(--color-bg-primary);
+    --color-button-primary-hover: var(--color-elevation-primary-4);
+    --color-button-primary-text: var(--white);
+
+    // Secondary button colour
+    --color-button-secondary: var(--color-elevation-primary-1);
+    --color-button-secondary-hover: var(--color-elevation-primary-2);
+    --color-button-secondary-text: var(--primary500);
+
+    // Tertiary button colour
+    --color-button-tertiary: var(--color-bg);
+    --color-button-tertiary-hover: var(--color-elevation-1);
+    --color-button-tertiary-text: var(--neutral900);
+    --color-button-tertiary-border: var(--neutral200);
+
+    // Icon button
+    --color-button-icon: var(--neutral800);
+    --color-button-icon-border: var(--neutral200);
+    --color-button-icon-border-hover: var(--neutral300);
+
+    --color-button-disabled-bg: var(--neutral100);
+    --color-button-disabled-text: var(--neutral600);
+
+    // Check input
+    --color-checkbox-border: var(--neutral300);
+    --color-checkbox-active-bg: var(--primary600);
+    --color-checkbox-active-border: var(--primary600);
+    --color-checkbox-disabled-bg: var(--neutral200);
+    --color-checkbox-disabled-border: var(--neutral300);
+    --color-checkbox-disabled-check: var(--neutral600);
+    --color-checkbox-focus-border: var(--primary300);
+    --color-checkbox-check: var(--white);
+
+    // All text fields
+    --color-textfield-border: var(--gray300);
+    --color-textfield-text: var(--neutral900);
+    --color-textfield-placeholder: var(--gray600);
+    --color-textfield-focus-border: var(--primary600);
+    --color-textfield-disabled-bg: var(--neutral100);
+    --color-textfield-disabled-text: var(--neutral600);
+    --color-textfield-disabled-placeholder: var(--neutral600);
+    --color-textfield-error-border: var(--error500);
+
+    // General modal colours
+    --color-modal-body-bg: var(--white);
+    --color-modal-body-scroll-bg: var(--neutral200);
+    --color-modal-body-scroll-hover-bg: var(--neutral100);
+
+    --color-modal-footer-bg: var(--neutral100);
+    --color-modal-footer-border: var(--gray100);
+
+    --color-modal-header-bg: var(--neutral100);
+    --color-modal-header-border: var(--gray100);
 }
 
-.darkTheme {
-    color-scheme: dark;
-}
+// Dark mode
+[data-theme='dark'] {
+    --color-bg: var(--black);
 
-// Define colour scale
-:root {
-    // Black & White
-    @include generateVars('white', #ffffff);
-    @include generateVars('black', #131313);
-
-    // Grays
-    @include generateVars('gray100', #fafafa);
-    @include generateVars('gray200', #e6e6e6);
-    @include generateVars('gray300', #cccccc);
-    @include generateVars('gray400', #b3b3b3);
-    @include generateVars('gray500', #999999);
-    @include generateVars('gray600', #808080);
-    @include generateVars('gray700', #666666);
-    @include generateVars('gray800', #4c4c4c);
-    @include generateVars('gray900', #333333);
-
-    // Neutrals
-    @include generateVars('neutral100', #f6f6f9);
-    @include generateVars('neutral200', #dcdce4);
-    @include generateVars('neutral300', #c0c0cf);
-    @include generateVars('neutral400', #a5a5ba);
-    @include generateVars('neutral500', #8e8ea9);
-    @include generateVars('neutral600', #666687);
-    @include generateVars('neutral700', #4a4a6a);
-    @include generateVars('neutral800', #32324d);
-    @include generateVars('neutral900', #212134);
-
-    // Primary
-    @include generateVars('primary100', #e2e1f6);
-    @include generateVars('primary200', #c4c4ed);
-    @include generateVars('primary300', #a7a6e3);
-    @include generateVars('primary400', #8989da);
-    @include generateVars('primary500', #6c6bd1);
-    @include generateVars('primary600', #5656a7);
-    @include generateVars('primary700', #41407d);
-    @include generateVars('primary800', #2b2b54);
-    @include generateVars('primary900', #16152a);
-
-    // Secondary
-    @include generateVars('secondary100', #ebeffa);
-    @include generateVars('secondary200', #c3d0ef);
-    @include generateVars('secondary300', #9bb0e4);
-    @include generateVars('secondary400', #7391d9);
-    @include generateVars('secondary500', #4b72ce);
-    @include generateVars('secondary600', #3158b4);
-    @include generateVars('secondary700', #26458c);
-    @include generateVars('secondary800', #1b3164);
-    @include generateVars('secondary900', #101d3c);
-
-    // Tertiary
-    @include generateVars('tertiary100', #e3e1ef);
-    @include generateVars('tertiary200', #c8c3df);
-    @include generateVars('tertiary300', #aca5cf);
-    @include generateVars('tertiary400', #9187bf);
-    @include generateVars('tertiary500', #7569af);
-    @include generateVars('tertiary600', #5e548c);
-    @include generateVars('tertiary700', #463f69);
-    @include generateVars('tertiary800', #2f2a46);
-    @include generateVars('tertiary900', #171523);
-
-    // Success
-    @include generateVars('success100', #f3faf4);
-    @include generateVars('success200', #dbf0df);
-    @include generateVars('success300', #acdbb5);
-    @include generateVars('success400', #64bd76);
-    @include generateVars('success500', #388347);
-    @include generateVars('success600', #2e6b3a);
-    @include generateVars('success700', #24532d);
-    @include generateVars('success800', #193c20);
-    @include generateVars('success900', #0f2413);
-
-    // Warning
-    @include generateVars('warning100', #fcf7f1);
-    @include generateVars('warning200', #f7e8d4);
-    @include generateVars('warning300', #edca9a);
-    @include generateVars('warning400', #e8bb7d);
-    @include generateVars('warning500', #9f681c);
-    @include generateVars('warning600', #825517);
-    @include generateVars('warning700', #654212);
-    @include generateVars('warning800', #482f0d);
-    @include generateVars('warning900', #2b1c08);
-
-    // Error
-    @include generateVars('error100', #faecec);
-    @include generateVars('error200', #f1c7c7);
-    @include generateVars('error300', #e8a2a2);
-    @include generateVars('error400', #d55858);
-    @include generateVars('error500', #cc3333);
-    @include generateVars('error600', #a72a2a);
-    @include generateVars('error700', #822020);
-    @include generateVars('error800', #5d1717);
-    @include generateVars('error900', #380e0e);
+    --color-text-primary: var(--white);
 }

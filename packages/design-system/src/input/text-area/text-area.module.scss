@@ -1,10 +1,10 @@
 .input {
-    border: 1px solid var(--gray300);
+    border: 1px solid var(--color-textfield-border);
     border-radius: $border-radius-sm;
 
     padding: $spacing-2 $spacing-4;
 
-    color: var(--neutral900);
+    color: var(--color-textfield-text);
 
     background: transparent;
 
@@ -13,20 +13,20 @@
     @include body-md;
 
     &::placeholder {
-        color: var(--gray600);
+        color: var(--color-textfield-placeholder);
     }
 
     &:focus {
-        border: 1px solid var(--primary600);
+        border: 1px solid var(--color-textfield-focus-border);
     }
 
     &:disabled {
-        background-color: var(--neutral100);
+        background-color: var(--color-textfield-disabled-bg);
 
-        color: var(--neutral600);
+        color: var(--color-textfield-disabled-text);
 
         &::placeholder {
-            color: var(--neutral600);
+            color: var(--color-textfield-disabled-placeholder);
         }
     }
 
@@ -34,5 +34,5 @@
 }
 
 .error {
-    border: 1px solid var(--error500);
+    border: 1px solid var(--color-textfield-error-border);
 }

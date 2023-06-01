@@ -47,7 +47,7 @@
     position: relative;
 
     &:focus {
-        background-color: var(--primary100);
+        background-color: var(--color-elevation-primary-1);
     }
 
     @include sm {

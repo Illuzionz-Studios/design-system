@@ -19,7 +19,7 @@ export const ModalFooter: React.FC<ModalFooterType> = ({
             paddingBottom={4}
             paddingLeft={5}
             paddingRight={5}
-            background="gray100"
+            background="color-modal-footer-border"
         >
             <Flex
                 direction="row"

@@ -1,4 +1,10 @@
-import { useTheme } from '@illuzionz-studios/design-system';
+import {
+    ModalBody,
+    ModalFooter,
+    ModalHeader,
+    ModalLayout,
+    useTheme,
+} from '@illuzionz-studios/design-system';
 import {
     Badge,
     Button,
@@ -15,10 +21,37 @@ import Head from 'next/head';
 import { useState } from 'react';
 import { FaTimes } from 'react-icons/fa';
 
+type TestModalType = {
+    onClose: () => void;
+} & React.HTMLAttributes<HTMLDivElement>;
+
+const TestModal: React.FC<TestModalType> = ({ onClose }) => (
+    <ModalLayout onClose={onClose}>
+        <ModalHeader>
+            <Heading variant="heading-3" element="h3">
+                Test
+            </Heading>
+        </ModalHeader>
+        <ModalBody></ModalBody>
+        <ModalFooter
+            startActions={[
+                <Button key={1} variant="primary">
+                    Test
+                </Button>,
+            ]}
+            endActions={[
+                <Button key={1} variant="primary">
+                    Test
+                </Button>,
+            ]}
+        />
+    </ModalLayout>
+);
 export default function Home() {
     const [testFieldValue, setTestFieldValue] = useState('');
     const [checked, setChecked] = useState(false);
     const { theme, toggleTheme } = useTheme();
+    const [showModal, setShowModal] = useState(false);
 
     return (
         <>
@@ -37,6 +70,7 @@ export default function Home() {
                     href="https://cdn.illuzionzstudios.com/logo/Secondary%20Logo-no-bg.png"
                 />
             </Head>
+            {showModal && <TestModal onClose={() => setShowModal(false)} />}
             <main>
                 <Container>
                     <Flex direction="column" gap={7} paddingTop={6}>
@@ -45,8 +79,8 @@ export default function Home() {
                                 Badges
                             </Heading>
                             <Flex direction="row" gap={4} alignItems="center">
-                                <Badge variant="default">Default</Badge>
-                                <Badge variant="active">Active</Badge>
+                                <Badge variant="secondary">Default</Badge>
+                                <Badge variant="primary">Active</Badge>
                             </Flex>
                         </Flex>
 
@@ -66,6 +100,9 @@ export default function Home() {
                                 <Button
                                     variant="secondary"
                                     colorScheme="primary"
+                                    onClick={() =>
+                                        setShowModal((prev) => !prev)
+                                    }
                                 >
                                     Secondary Button
                                 </Button>

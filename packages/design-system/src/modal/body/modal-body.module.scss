@@ -4,7 +4,7 @@
     max-height: 60vh;
 
     padding: $spacing-7;
-    background-color: var(--white);
+    background-color: var(--color-modal-body-bg);
 
     /* width */
     &::-webkit-scrollbar {
@@ -22,11 +22,11 @@
     /* Handle */
     &::-webkit-scrollbar-thumb {
         border-radius: $border-radius-lg;
-        background: var(--neutral200);
+        background: var(--color-modal-body-scroll-bg);
     }
 
     /* Handle on hover */
     &::-webkit-scrollbar-thumb:hover {
-        background: var(--neutral100);
+        background: var(--color-modal-body-scroll-hover-bg);
     }
 }

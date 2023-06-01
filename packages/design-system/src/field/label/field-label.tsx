@@ -7,7 +7,7 @@ export const FieldLabel: React.FC<
     React.LabelHTMLAttributes<HTMLLabelElement>
 > = ({ children, ...rest }) => {
     return (
-        <Label variant="md" color="black">
+        <Label variant="md">
             <label {...rest}>{children}</label>
         </Label>
     );

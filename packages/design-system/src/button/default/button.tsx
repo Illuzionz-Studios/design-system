@@ -1,7 +1,8 @@
 import { CSSProperties } from 'react';
-import { ColorValues, cssColorShade, useTheme } from '../../theme';
+import { ColorValues, useTheme } from '../../theme';
 import { BaseButton, BaseButtonProps } from '../base/base-button';
 import styles from './button.module.scss';
+import classNames from 'classnames';
 
 type ButtonVariants = 'primary' | 'secondary' | 'tertiary';
 
@@ -26,54 +27,15 @@ export const Button: React.FC<ButtonProps> = ({
     colorScheme,
     ...rest
 }) => {
-    // Different color styles
-    let buttonVariantStyles: BaseButtonProps = {};
-
-    if (variant === 'primary') {
-        let focusStyles = {
-            background: cssColorShade(colorScheme, 400),
-        };
-
-        buttonVariantStyles = {
-            background: colorScheme + '500',
-            color: 'white',
-            whileHover: focusStyles,
-            whileFocus: focusStyles,
-        };
-    } else if (variant === 'secondary') {
-        let focusStyles = {
-            background: cssColorShade(colorScheme, 200),
-        };
-
-        buttonVariantStyles = {
-            background: colorScheme + '100',
-            color: colorScheme + '600',
-            whileHover: focusStyles,
-            whileFocus: focusStyles,
-        };
-    } else if (variant === 'tertiary') {
-        let focusStyles = {
-            background: cssColorShade(colorScheme, 100),
-        };
-
-        buttonVariantStyles = {
-            background: undefined,
-            borderColor: colorScheme + '300',
-            color: colorScheme + '600',
-            whileHover: focusStyles,
-            whileFocus: focusStyles,
-        };
-    }
+    let variantClass = 'button-' + variant;
 
     return (
         <BaseButton
-            // transition={{ type: 'spring', bounce: 0.6 }}
-            className={className}
+            className={classNames(styles[variantClass], className)}
             paddingTop={sizeDef[size]}
             paddingBottom={sizeDef[size]}
             paddingLeft={4}
             paddingRight={4}
-            {...buttonVariantStyles}
             {...rest}
         >
             {children}

@@ -35,6 +35,10 @@ export default defineConfig((configEnv) => ({
                     dest: 'styles',
                 },
                 {
+                    src: 'src/styles/color-scale.scss',
+                    dest: 'styles',
+                },
+                {
                     src: 'src/styles/theme-colors.scss',
                     dest: 'styles',
                 },

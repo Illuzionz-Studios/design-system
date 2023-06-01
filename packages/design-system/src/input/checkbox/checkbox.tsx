@@ -4,6 +4,8 @@ import { Flex } from '../../layout/flex';
 import styles from './checkbox.module.scss';
 
 type CheckboxInputProps = {
+    id: string;
+    name: string;
     checked: boolean;
     disabled?: boolean;
     onChange?: ChangeEventHandler<HTMLInputElement>;
@@ -13,6 +15,8 @@ type CheckboxInputProps = {
  * Base check box styling. Exposes control variables
  */
 export const CheckboxInput: React.FC<CheckboxInputProps> = ({
+    id,
+    name,
     checked,
     disabled,
     onChange,
@@ -33,7 +37,8 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
                 type="checkbox"
                 ref={checkBox}
                 className={styles.checkbox}
-                name="test"
+                id={id}
+                name={name}
                 checked={checked}
                 onChange={onChange}
                 disabled={disabled}

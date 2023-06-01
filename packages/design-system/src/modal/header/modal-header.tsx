@@ -15,7 +15,7 @@ export const ModalHeader: React.FC = ({ children }) => {
             paddingBottom={4}
             paddingLeft={5}
             paddingRight={5}
-            background="gray100"
+            background="color-modal-header-border"
         >
             <Flex
                 direction="row"

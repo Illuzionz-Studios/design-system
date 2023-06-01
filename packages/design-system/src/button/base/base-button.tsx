@@ -1,6 +1,5 @@
 import classNames from 'classnames';
-import { HTMLMotionProps, motion, Target, VariantLabels } from 'framer-motion';
-import { CSSProperties, ReactNode } from 'react';
+import { CSSProperties, HtmlHTMLAttributes, ReactNode } from 'react';
 import { Box } from '../../layout/box';
 import { cssColor, useTheme } from '../../theme';
 import { Label } from '../../typography';
@@ -9,7 +8,6 @@ import styles from './base-button.module.scss';
 export type BaseButtonProps = {
     className?: CSSProperties | string;
     style?: CSSProperties;
-    initial?: any;
     color?: string;
     background?: string;
     borderColor?: string;
@@ -23,11 +21,10 @@ export type BaseButtonProps = {
     paddingLeft?: number;
     paddingTop?: number;
     paddingRight?: number;
-} & HTMLMotionProps<'button'>;
+} & HtmlHTMLAttributes<HTMLButtonElement>;
 
 export const BaseButton: React.FC<BaseButtonProps> = ({
     children,
-    initial,
     className,
     style,
     color,
@@ -48,15 +45,7 @@ export const BaseButton: React.FC<BaseButtonProps> = ({
     const { theme } = useTheme();
 
     return (
-        <motion.button
-            initial={{
-                background: background ? cssColor(background) : 'transparent',
-                color: color ? cssColor(color) : undefined,
-                borderColor: borderColor
-                    ? cssColor(borderColor)
-                    : 'transparent',
-                ...initial,
-            }}
+        <button
             className={classNames(
                 styles.baseButton,
                 fullWidth ? styles.fullWidth : '',
@@ -67,7 +56,9 @@ export const BaseButton: React.FC<BaseButtonProps> = ({
             style={{
                 backgroundColor: background ? cssColor(background) : undefined,
                 color: color ? cssColor(color) : undefined,
-                borderColor: borderColor ? cssColor(borderColor) : undefined,
+                border: borderColor
+                    ? '1px solid ' + cssColor(borderColor)
+                    : undefined,
                 borderRadius: radius
                     ? theme.borderRadius[radius]
                     : theme.borderRadius['sm'],
@@ -101,6 +92,6 @@ export const BaseButton: React.FC<BaseButtonProps> = ({
             {startIcon && <Box className={styles.iconWrapper}>{startIcon}</Box>}
             {children && <Label variant="button">{children}</Label>}
             {endIcon && <Box className={styles.iconWrapper}>{endIcon}</Box>}
-        </motion.button>
+        </button>
     );
 };

@@ -10,28 +10,6 @@ export const ThemeContext = createContext({
     toggleTheme: () => {},
 });
 
-const detectColorScheme = () => {
-    var theme = 'light'; //default to light
-
-    //local storage is used to override OS theme settings
-    if (localStorage.getItem('theme')) {
-        if (localStorage.getItem('theme') == 'dark') {
-            var theme = 'dark';
-        }
-    } else if (!window.matchMedia) {
-        //matchMedia method not supported
-        return false;
-    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        // OS theme setting detected as dark
-        var theme = 'dark';
-    }
-
-    //dark theme preferred, set document with a `data-theme` attribute
-    if (theme == 'dark') {
-        document.documentElement.setAttribute('data-theme', 'dark');
-    }
-};
-
 export const ThemeProvider: React.FC = ({ children }) => {
     const [isDarkTheme, setIsDarkTheme] = useState(false);
 
@@ -93,32 +71,26 @@ export function useTheme() {
 }
 
 export type ColorValues =
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'success'
-    | 'warning'
-    | 'error'
+    | PrimaryColorValues
     | 'gray'
     | 'neutral'
     | 'white'
     | 'black'
     | undefined;
-export type ColorShades = 100 | 200 | 300 | 400 | 500 | 600 | 700 | 800 | 900;
 
-export function cssColorShade(color: ColorValues, shade: ColorShades) {
-    // Invalid color
-    if (!color) return 'var(--error500)';
+// Primary colour 'themes' for components who can
+// alter primary appearance.
+// Default refers to their default colour
+export type PrimaryColorValues =
+    | 'default'
+    | 'primary'
+    | 'secondary'
+    | 'tertiary'
+    | 'success'
+    | 'warning'
+    | 'error';
 
-    if (color === 'black' || color === 'white') {
-        return 'var(--' + color + ')';
-    }
-
-    // Return css variable value
-    return 'var(--' + color + shade + ')';
-}
-
+// Return the colour defintiion from css variable
 export function cssColor(color: string) {
-    // Return straight css variable with color name
     return 'var(--' + color + ')';
 }

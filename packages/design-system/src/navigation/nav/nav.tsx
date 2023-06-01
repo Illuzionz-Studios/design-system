@@ -2,8 +2,8 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { ReactNode, useEffect, useState } from 'react';
 import { FaBars } from 'react-icons/fa';
 import { Container } from '../../layout/container';
-import { cssColorShade } from '../../theme';
 import styles from './nav.module.scss';
+import { cssColor } from '../../theme';
 
 type NavProps = {
     colorScheme: 'primary' | 'secondary' | 'tertiary';
@@ -58,7 +58,7 @@ export const Nav: React.FC<NavProps> = ({ colorScheme, logo, links }) => {
                             onClick={(e) => e.stopPropagation()}
                             className={styles.expandedLinks}
                             style={{
-                                background: cssColorShade(colorScheme, 200),
+                                background: cssColor(colorScheme + '200'),
                             }}
                             initial={{
                                 x: 500,

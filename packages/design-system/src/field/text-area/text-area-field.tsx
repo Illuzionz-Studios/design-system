@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { HTMLMotionProps } from 'framer-motion';
 import { CSSProperties } from 'react';
 import { Field } from '../field/field';
 import { FieldError } from '../error/field-error';
@@ -46,7 +45,6 @@ type TextAreaFieldProps = {
     id: string;
     label?: string;
     error?: string;
-    motion?: HTMLMotionProps<'div'>;
 } & React.HTMLAttributes<HTMLTextAreaElement>;
 
 /**
@@ -61,7 +59,6 @@ export const TextAreaField: React.FC<TextAreaFieldProps> = ({
     id,
     label,
     error,
-    motion,
     ...rest
 }) => {
     return (
@@ -70,7 +67,6 @@ export const TextAreaField: React.FC<TextAreaFieldProps> = ({
             name={name}
             error={error}
             className={classNames(styles.field, className)}
-            {...motion}
         >
             <Flex direction="column" gap={1}>
                 {label && (

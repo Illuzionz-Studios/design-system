@@ -1,9 +1,10 @@
 import classNames from 'classnames';
 import { Box, BoxProps } from '../layout/box';
 import styles from './badge.module.scss';
+import { PrimaryColorValues } from '../theme';
 
 type BadgeProps = {
-    variant: 'default' | 'active';
+    variant: PrimaryColorValues;
 } & BoxProps;
 
 export const Badge: React.FC<BadgeProps> = ({ children, variant, ...rest }) => {

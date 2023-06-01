@@ -9,7 +9,7 @@
 // Import design tokens
 @import 'design-system-utils.scss';
 
-// Import design token colours
+// Import theme and colour scale
 @import 'theme-colors.scss';
 
 // Hide default scroll bar
@@ -98,8 +98,8 @@ body {
     min-height: var(--vh);
 
     // Default colours
-    background-color: var(--gray100);
-    color: var(--black);
+    background-color: var(--color-bg);
+    color: var(--color-text-primary);
 
     // Default font
     font-family: $font-1;

@@ -11,7 +11,7 @@ export const FieldError: React.FC = () => {
     if (!error || typeof error !== 'string') return null;
 
     return (
-        <Label variant="sm" color="error500" id={`${id}-error`}>
+        <Label variant="sm" color="color-text-error" id={`${id}-error`}>
             {error}
         </Label>
     );
