@@ -90,6 +90,13 @@ export default function Home() {
                                 Buttons
                             </Heading>
                             <Flex direction="row" gap={4} alignItems="center">
+                                <Box
+                                    inlineStyle={{
+                                        background: 'blue',
+                                    }}
+                                >
+                                    Test
+                                </Box>
                                 <Button
                                     variant="primary"
                                     colorScheme="primary"

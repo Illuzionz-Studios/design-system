@@ -1,7 +1,9 @@
+import { CSSProperties } from 'react';
 import { useTheme } from '../../theme';
 import { Box, BoxProps } from '../box';
 
 export type FlexTypes = {
+    inlineStyle?: CSSProperties;
     alignItems?: string;
     justifyContent?: string;
     justifySelf?: string;
@@ -19,6 +21,7 @@ export type FlexTypes = {
  */
 export const Flex: React.FC<FlexTypes> = ({
     children,
+    inlineStyle,
     alignItems,
     justifyContent,
     justifySelf,
@@ -44,6 +47,7 @@ export const Flex: React.FC<FlexTypes> = ({
                 flexShrink: shrink,
                 flexWrap: wrap,
                 gap: gap ? theme.spaces[gap] : undefined,
+                ...inlineStyle,
             }}
             {...rest}
         >
