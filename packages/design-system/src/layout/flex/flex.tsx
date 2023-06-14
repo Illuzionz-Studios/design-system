@@ -9,6 +9,7 @@ export type FlexTypes = {
     justifySelf?: string;
     inline?: boolean;
 
+    flex?: string;
     direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
     shrink?: string;
     wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
@@ -27,6 +28,7 @@ export const Flex: React.FC<FlexTypes> = ({
     justifySelf,
     inline = false,
 
+    flex,
     direction,
     shrink,
     wrap,
@@ -46,6 +48,7 @@ export const Flex: React.FC<FlexTypes> = ({
                 flexDirection: direction,
                 flexShrink: shrink,
                 flexWrap: wrap,
+                flex: flex,
                 gap: gap ? theme.spaces[gap] : undefined,
                 ...inlineStyle,
             }}
