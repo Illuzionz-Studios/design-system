@@ -1,3 +1,6 @@
+// All components are client components (NextJS 13)
+'use client';
+
 export * from './badge';
 export * from './button';
 export * from './field';
