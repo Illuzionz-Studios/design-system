@@ -56,5 +56,6 @@
         "./styles": "./dist/style.css",
         "./main-styles": "./dist/styles/design-system.scss",
         "./style-utils": "./dist/styles/design-system-utils.scss"
-    }
+    },
+    "gitHead": "4179e4be6587907f1847247e85486e3173c5e2bc"
 }

@@ -64,7 +64,6 @@ export const Box: React.FC<BoxProps> = ({
     return (
         <motion.div
             style={{
-                ...inlineStyle,
                 backgroundColor: background
                     ? 'var(--' + background + ')'
                     : undefined,
@@ -123,6 +122,8 @@ export const Box: React.FC<BoxProps> = ({
                 flexShrink: shrink,
                 flexGrow: grow,
                 flexBasis: basis,
+                // Override box styles
+                ...inlineStyle,
             }}
             {...rest}
         >
