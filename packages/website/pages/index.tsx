@@ -54,6 +54,8 @@ export default function Home() {
     const { theme, toggleTheme } = useTheme();
     const [showModal, setShowModal] = useState(false);
 
+    const shades = ['string 1', 'string 2', 'string 3'];
+
     return (
         <>
             <Head>
@@ -130,6 +132,33 @@ export default function Home() {
                             <Heading element="h2" variant="heading-2">
                                 Inputs
                             </Heading>
+
+                            <Flex direction="row" flex="1" justifyContent="">
+                                {shades.map((colour, index) => {
+                                    return (
+                                        <Flex
+                                            key={index}
+                                            background="black"
+                                            borderColor="white"
+                                            color="white"
+                                            inlineStyle={{
+                                                flex: '1',
+                                            }}
+                                            paddingTop={4}
+                                            paddingBottom={4}
+                                            justifyContent="center"
+                                            onClick={(e) => {
+                                                navigator.clipboard.writeText(
+                                                    colour
+                                                );
+                                            }}
+                                        >
+                                            {colour}
+                                        </Flex>
+                                    );
+                                })}
+                            </Flex>
+
                             <TextField
                                 id="test-field"
                                 name="test-field"

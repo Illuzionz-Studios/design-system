@@ -9,7 +9,6 @@ export type FlexTypes = {
     justifySelf?: string;
     inline?: boolean;
 
-    flex?: string;
     direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
     shrink?: string;
     wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
@@ -28,7 +27,6 @@ export const Flex: React.FC<FlexTypes> = ({
     justifySelf,
     inline = false,
 
-    flex,
     direction,
     shrink,
     wrap,
@@ -40,15 +38,14 @@ export const Flex: React.FC<FlexTypes> = ({
     return (
         <Box
             inlineStyle={{
-                alignItems: alignItems,
-                justifyContent: justifyContent,
-                justifySelf: justifySelf,
+                alignItems: alignItems ? alignItems : undefined,
+                justifyContent: justifyContent ? justifyContent : undefined,
+                justifySelf: justifySelf ? justifySelf : undefined,
                 display: inline ? 'inline-flex' : 'flex',
 
-                flexDirection: direction,
-                flexShrink: shrink,
-                flexWrap: wrap,
-                flex: flex,
+                flexDirection: direction ? direction : undefined,
+                flexShrink: shrink ? shrink : undefined,
+                flexWrap: wrap ? wrap : undefined,
                 gap: gap ? theme.spaces[gap] : undefined,
                 ...inlineStyle,
             }}

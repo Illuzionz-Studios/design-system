@@ -118,10 +118,10 @@ export const Box: React.FC<BoxProps> = ({
                     ? theme.spaces[margin]
                     : undefined,
 
-                flex,
-                flexShrink: shrink,
-                flexGrow: grow,
-                flexBasis: basis,
+                flex: flex ? flex : undefined,
+                flexShrink: shrink ? shrink : undefined,
+                flexGrow: grow ? grow : undefined,
+                flexBasis: basis ? basis : undefined,
                 // Override box styles
                 ...inlineStyle,
             }}
