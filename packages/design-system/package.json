@@ -1,6 +1,6 @@
 {
     "name": "@illuzionz-studios/design-system",
-    "version": "0.0.12",
+    "version": "0.0.13",
     "description": "Illuzionz Studios React Component Library",
     "type": "module",
     "scripts": {
