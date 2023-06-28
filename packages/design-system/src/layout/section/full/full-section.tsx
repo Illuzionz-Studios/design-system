@@ -1,19 +1,10 @@
-import classNames from 'classnames';
-import { HTMLMotionProps, motion } from 'framer-motion';
-import React from 'react';
-import styles from './full-section.module.scss';
+import React, { PropsWithChildren } from 'react';
+import { Flex } from '../../flex';
 
-export const FullSection: React.FC<HTMLMotionProps<'div'>> = ({
-    children,
-    className,
-    ...rest
-}) => {
+export const FullSection: React.FC<PropsWithChildren> = ({ children }) => {
     return (
-        <motion.div
-            className={classNames(styles.fullSection, className)}
-            {...rest}
-        >
+        <Flex position="relative" height="var(--vh)" width="100vw" direction="column" margin="auto auto">
             {children}
-        </motion.div>
+        </Flex>
     );
 };

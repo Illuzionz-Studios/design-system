@@ -1,10 +1,6 @@
 .modalBody {
     // Allow scrolling in body
     overflow-y: scroll;
-    max-height: 60vh;
-
-    padding: $spacing-7;
-    background-color: var(--color-modal-body-bg);
 
     /* width */
     &::-webkit-scrollbar {

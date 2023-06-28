@@ -1,38 +1,3 @@
 .input {
-    border: 1px solid var(--color-textfield-border);
-    border-radius: $border-radius-sm;
-
-    padding: $spacing-2 $spacing-4;
-
-    color: var(--color-textfield-text);
-
-    background: transparent;
-
-    width: 100%;
-
     @include body-md;
-
-    &::placeholder {
-        color: var(--color-textfield-placeholder);
-    }
-
-    &:focus {
-        border: 1px solid var(--color-textfield-focus-border);
-    }
-
-    &:disabled {
-        background-color: var(--color-textfield-disabled-bg);
-
-        color: var(--color-textfield-disabled-text);
-
-        &::placeholder {
-            color: var(--color-textfield-disabled-placeholder);
-        }
-    }
-
-    resize: vertical;
-}
-
-.error {
-    border: 1px solid var(--color-textfield-error-border);
 }

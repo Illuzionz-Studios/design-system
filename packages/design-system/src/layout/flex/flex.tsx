@@ -1,57 +1,35 @@
 import { CSSProperties } from 'react';
-import { useTheme } from '../../theme';
 import { Box, BoxProps } from '../box';
+import styled from 'styled-components';
 
-export type FlexTypes = {
-    inlineStyle?: CSSProperties;
-    alignItems?: string;
-    justifyContent?: string;
-    justifySelf?: string;
+export type FlexProps<TElement extends keyof JSX.IntrinsicElements = 'div'> = BoxProps<TElement> & {
+    alignItems?: CSSProperties['alignItems'];
+    justifyContent?: CSSProperties['justifyContent'];
+    justifySelf?: CSSProperties['justifySelf'];
     inline?: boolean;
 
-    direction?: 'row' | 'row-reverse' | 'column' | 'column-reverse';
-    shrink?: string;
-    wrap?: 'nowrap' | 'wrap' | 'wrap-reverse';
+    direction?: CSSProperties['flexDirection'];
+    wrap?: CSSProperties['flexWrap'];
     gap?: number;
-} & BoxProps;
+};
+
+const transientProps: Partial<Record<keyof FlexProps, boolean>> = {
+    direction: true,
+};
 
 /**
  * A box container that acts as a flex parent. Allows properties of a box
  * but also allows you to align content
  */
-export const Flex: React.FC<FlexTypes> = ({
-    children,
-    inlineStyle,
-    alignItems,
-    justifyContent,
-    justifySelf,
-    inline = false,
+export const Flex = styled(Box).withConfig({
+    shouldForwardProp: (prop) => !transientProps[prop as keyof FlexProps],
+})<FlexProps>`
+    align-items: ${({ alignItems = 'left' }) => alignItems};
+    justify-content: ${({ justifyContent }) => justifyContent};
+    justify-self: ${({ justifySelf }) => justifySelf};
+    display: ${({ display = 'flex', inline }) => (inline ? 'inline-flex' : display)};
 
-    direction,
-    shrink,
-    wrap,
-    gap,
-    ...rest
-}) => {
-    const { theme, toggleTheme } = useTheme();
-
-    return (
-        <Box
-            inlineStyle={{
-                alignItems: alignItems ? alignItems : undefined,
-                justifyContent: justifyContent ? justifyContent : undefined,
-                justifySelf: justifySelf ? justifySelf : undefined,
-                display: inline ? 'inline-flex' : 'flex',
-
-                flexDirection: direction ? direction : undefined,
-                flexShrink: shrink ? shrink : undefined,
-                flexWrap: wrap ? wrap : undefined,
-                gap: gap ? theme.spaces[gap] : undefined,
-                ...inlineStyle,
-            }}
-            {...rest}
-        >
-            {children}
-        </Box>
-    );
-};
+    flex-direction: ${({ direction = 'row' }) => direction};
+    flex-wrap: ${({ wrap }) => wrap};
+    gap: ${({ theme, gap }) => (gap ? theme.spaces[gap] : undefined)};
+`;

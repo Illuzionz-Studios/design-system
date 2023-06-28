@@ -1,97 +1,56 @@
-import classNames from 'classnames';
-import { CSSProperties, HtmlHTMLAttributes, ReactNode } from 'react';
-import { Box } from '../../layout/box';
-import { cssColor, useTheme } from '../../theme';
+import { PropsWithChildren, ReactNode, forwardRef } from 'react';
 import { Label } from '../../typography';
-import styles from './base-button.module.scss';
+import { styled } from 'styled-components';
+import { Flex } from '../../layout';
+import { FlexProps } from '../../layout/flex/flex';
 
-export type BaseButtonProps = {
-    className?: CSSProperties | string;
-    style?: CSSProperties;
-    color?: string;
-    background?: string;
-    borderColor?: string;
-    radius?: 'sm' | 'md' | 'lg';
+export type BaseButtonProps<TElement extends keyof JSX.IntrinsicElements = 'button'> = FlexProps<TElement> & {
     startIcon?: ReactNode;
     endIcon?: ReactNode;
-    disabled?: boolean;
     fullWidth?: boolean;
-    padding?: number;
-    paddingBottom?: number;
-    paddingLeft?: number;
-    paddingTop?: number;
-    paddingRight?: number;
-} & HtmlHTMLAttributes<HTMLButtonElement>;
-
-export const BaseButton: React.FC<BaseButtonProps> = ({
-    children,
-    className,
-    style,
-    color,
-    background,
-    borderColor,
-    radius,
-    startIcon,
-    endIcon,
-    disabled,
-    fullWidth,
-    padding,
-    paddingBottom,
-    paddingLeft,
-    paddingTop,
-    paddingRight,
-    ...rest
-}) => {
-    const { theme } = useTheme();
-
-    return (
-        <button
-            className={classNames(
-                styles.baseButton,
-                fullWidth ? styles.fullWidth : '',
-                className
-            )}
-            disabled={disabled}
-            aria-disabled={disabled}
-            style={{
-                backgroundColor: background ? cssColor(background) : undefined,
-                color: color ? cssColor(color) : undefined,
-                border: borderColor
-                    ? '1px solid ' + cssColor(borderColor)
-                    : undefined,
-                borderRadius: radius
-                    ? theme.borderRadius[radius]
-                    : theme.borderRadius['sm'],
-
-                // Set all values with master padding
-                paddingBottom: paddingBottom
-                    ? theme.spaces[paddingBottom]
-                    : padding
-                    ? theme.spaces[padding]
-                    : undefined,
-                paddingLeft: paddingLeft
-                    ? theme.spaces[paddingLeft]
-                    : padding
-                    ? theme.spaces[padding]
-                    : undefined,
-                paddingTop: paddingTop
-                    ? theme.spaces[paddingTop]
-                    : padding
-                    ? theme.spaces[padding]
-                    : undefined,
-                paddingRight: paddingRight
-                    ? theme.spaces[paddingRight]
-                    : padding
-                    ? theme.spaces[padding]
-                    : undefined,
-
-                ...style,
-            }}
-            {...rest}
-        >
-            {startIcon && <Box className={styles.iconWrapper}>{startIcon}</Box>}
-            {children && <Label variant="button">{children}</Label>}
-            {endIcon && <Box className={styles.iconWrapper}>{endIcon}</Box>}
-        </button>
-    );
 };
+
+// Wrapper for a button icon to size it correctly
+const IconWrapper: React.FC<PropsWithChildren> = ({ children }) => (
+    <Flex height="16px" width="auto" justifySelf="center" alignItems="center">
+        {children}
+    </Flex>
+);
+
+export const BaseButtonWrapper = styled(Flex)<{ $fullWidth: boolean | undefined }>`
+    width: ${({ $fullWidth }) => ($fullWidth ? '100%' : 'fit-content')};
+
+    &[aria-disabled='true'] {
+        pointer-events: none;
+        cursor: default;
+        background-color: var(--color-button-disabled-bg);
+        border: 1px solid var(--color-button-disabled-bg);
+        color: var(--color-button-disabled-text);
+    }
+`;
+
+export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
+    ({ children, disabled = false, startIcon, endIcon, fullWidth, ...rest }, ref) => {
+        return (
+            <BaseButtonWrapper
+                ref={ref}
+                as="button"
+                type="button"
+                disabled={disabled}
+                aria-disabled={disabled}
+                radius="sm"
+                cursor="pointer"
+                alignItems="center"
+                padding={4}
+                gap={2}
+                justifyContent="center"
+                $fullWidth={fullWidth}
+                {...rest}
+            >
+                {startIcon && <IconWrapper>{startIcon}</IconWrapper>}
+                {children && <Label variant="button">{children}</Label>}
+                {endIcon && <IconWrapper>{endIcon}</IconWrapper>}
+            </BaseButtonWrapper>
+        );
+    }
+);

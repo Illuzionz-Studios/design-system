@@ -1,9 +1,7 @@
-import classNames from 'classnames';
 import { CSSProperties } from 'react';
 import { Field } from '../field/field';
 import { FieldError } from '../error/field-error';
 import { FieldLabel } from '../label/field-label';
-import styles from './text-area-field.module.scss';
 import { useField } from '../field-context';
 import { TextArea } from '../../input/text-area';
 import { Flex } from '../../layout/flex';
@@ -17,23 +15,10 @@ type FieldAreaInputProps = {
 /**
  * Expose all variables to a field
  */
-export const FieldAreaInput: React.FC<FieldAreaInputProps> = ({
-    required,
-    disabled,
-    value,
-    ...rest
-}) => {
+export const FieldAreaInput: React.FC<FieldAreaInputProps> = ({ required, disabled, value, ...rest }) => {
     const { id, name, error } = useField();
 
-    return (
-        <TextArea
-            required={required}
-            value={value}
-            hasError={Boolean(error)}
-            id={id}
-            {...rest}
-        />
-    );
+    return <TextArea required={required} value={value} hasError={Boolean(error)} id={id} {...rest} />;
 };
 
 type TextAreaFieldProps = {
@@ -62,12 +47,7 @@ export const TextAreaField: React.FC<TextAreaFieldProps> = ({
     ...rest
 }) => {
     return (
-        <Field
-            id={id}
-            name={name}
-            error={error}
-            className={classNames(styles.field, className)}
-        >
+        <Field id={id} name={name} error={error} width="100%">
             <Flex direction="column" gap={1}>
                 {label && (
                     <FieldLabel htmlFor={id}>
@@ -75,13 +55,7 @@ export const TextAreaField: React.FC<TextAreaFieldProps> = ({
                         {required && <span style={{ color: 'red' }}>*</span>}
                     </FieldLabel>
                 )}
-                <FieldAreaInput
-                    id={id}
-                    value={value}
-                    required={required}
-                    disabled={disabled}
-                    {...rest}
-                />
+                <FieldAreaInput value={value} required={required} disabled={disabled} {...rest} />
                 <FieldError />
             </Flex>
         </Field>

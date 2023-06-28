@@ -4,8 +4,9 @@ import { Box } from '../../layout/box';
 import { Flex } from '../../layout/flex';
 import { useModal } from '../context/modal-context';
 import styles from './modal-header.module.scss';
+import { PropsWithChildren } from 'react';
 
-export const ModalHeader: React.FC = ({ children }) => {
+export const ModalHeader: React.FC<PropsWithChildren> = ({ children }) => {
     const { onClose } = useModal();
 
     return (
@@ -17,11 +18,7 @@ export const ModalHeader: React.FC = ({ children }) => {
             paddingRight={5}
             background="color-modal-header-border"
         >
-            <Flex
-                direction="row"
-                alignItems="center"
-                justifyContent="space-between"
-            >
+            <Flex direction="row" alignItems="center" justifyContent="space-between">
                 {children}
                 <IconButton icon={<FaTimes />} onClick={onClose} />
             </Flex>

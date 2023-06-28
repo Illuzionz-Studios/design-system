@@ -1,17 +1,15 @@
-import { useCallback, useEffect } from 'react';
+import { PropsWithChildren, useCallback, useEffect } from 'react';
 
 type DismissableLayerProps = {
     onEscapeKeyDown: (event: KeyboardEvent) => void;
 } & React.HTMLAttributes<HTMLDivElement>;
 
-export const DismissableLayer: React.FC<DismissableLayerProps> = ({
+export const DismissableLayer: React.FC<PropsWithChildren<DismissableLayerProps>> = ({
     children,
     onEscapeKeyDown,
     ...rest
 }) => {
-    const onEscapeKeyDownHandler = useCallback(onEscapeKeyDown, [
-        onEscapeKeyDown,
-    ]);
+    const onEscapeKeyDownHandler = useCallback(onEscapeKeyDown, [onEscapeKeyDown]);
 
     // Handle escape key
     useEffect(() => {

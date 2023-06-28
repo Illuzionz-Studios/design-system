@@ -11,12 +11,7 @@ export const Badge: React.FC<BadgeProps> = ({ children, variant, ...rest }) => {
     const variantClass = 'badge-' + variant;
 
     return (
-        <Box
-            paddingLeft={2}
-            paddingRight={2}
-            className={classNames(styles.badge, styles[variantClass])}
-            {...rest}
-        >
+        <Box paddingLeft={2} paddingRight={2} className={classNames(styles.badge, styles[variantClass])} {...rest}>
             {children}
         </Box>
     );

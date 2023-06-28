@@ -1,36 +1,27 @@
 import classNames from 'classnames';
-import { HTMLMotionProps, motion } from 'framer-motion';
 import { CSSProperties } from 'react';
 import styles from './body.module.scss';
+import { Box } from '../../layout';
 
-type BodyProps = {
+type BodyProps<TElement extends keyof JSX.IntrinsicElements = 'p'> = React.ComponentPropsWithoutRef<TElement> & {
     variant: 'xl' | 'lg' | 'md' | 'sm';
     color?: string;
     highlight?: boolean;
     className?: CSSProperties | string;
-} & HTMLMotionProps<'p'>;
+};
 
-export const Body: React.FC<BodyProps> = ({
-    children,
-    className,
-    variant,
-    color,
-    highlight = false,
-    ...rest
-}) => {
+export const Body: React.FC<BodyProps> = ({ children, className, variant, color, highlight = false, ...rest }) => {
     // Define styling
     const stylingName = 'body-' + variant + (highlight ? '-highlight' : '');
-    const colors = {
-        color: color ? 'var(--' + color + ')' : undefined,
-    };
 
     return (
-        <motion.p
-            style={colors}
+        <Box
+            color={color ? 'var(--' + color + ')' : undefined}
+            as="p"
             className={classNames(styles[stylingName], className)}
             {...rest}
         >
             {children}
-        </motion.p>
+        </Box>
     );
 };

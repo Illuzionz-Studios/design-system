@@ -1,26 +1,44 @@
-import { ColorValues } from '../../theme';
+import { PropsWithChildren } from 'react';
 import { BaseButton, BaseButtonProps } from '../base/base-button';
-import styles from './text-button.module.scss';
+import { styled } from 'styled-components';
 
-type ButtonProps = {
-    colorScheme?: ColorValues;
-} & BaseButtonProps;
+const TextButtonWrapper = styled(BaseButton)`
+    transition: 0.1s ease-in-out;
 
-export const TextButton: React.FC<ButtonProps> = ({
-    children,
-    colorScheme = 'primary',
-    ...rest
-}) => {
+    &[aria-disabled='true'] {
+        cursor: default;
+        background-color: transparent;
+        border: 1px solid transparent;
+        color: var(--color-button-disabled-text);
+
+        &:hover {
+            background-color: transparent;
+        }
+
+        &:focus,
+        &:active {
+            background-color: transparent;
+            border: 1px solid transparent;
+        }
+    }
+
+    &:hover {
+        background-color: var(--color-elevation-primary-1);
+    }
+`;
+
+export const TextButton: React.FC<PropsWithChildren<BaseButtonProps>> = ({ children, ...rest }) => {
     return (
-        <BaseButton
+        <TextButtonWrapper
+            color="color-button-primary"
+            background="transparent"
             paddingTop={1}
             paddingBottom={1}
             paddingLeft={4}
             paddingRight={4}
-            className={styles.textButton}
             {...rest}
         >
             {children}
-        </BaseButton>
+        </TextButtonWrapper>
     );
 };

@@ -1,8 +1,14 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, {
+    PropsWithChildren,
+    createContext,
+    useContext,
+    useState,
+} from 'react';
 import { useEffect } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { IconButton } from '../button';
 import { commonTheme } from './common-theme';
+import { ThemeProvider as StyledThemeProvider } from 'styled-components';
 
 // Theme object
 export const ThemeContext = createContext({
@@ -10,7 +16,7 @@ export const ThemeContext = createContext({
     toggleTheme: () => {},
 });
 
-export const ThemeProvider: React.FC = ({ children }) => {
+export const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
     const [isDarkTheme, setIsDarkTheme] = useState(false);
 
     const toggleTheme = (): void => {
@@ -45,7 +51,9 @@ export const ThemeProvider: React.FC = ({ children }) => {
 
     return (
         <ThemeContext.Provider value={{ isDarkTheme, toggleTheme }}>
-            {children}
+            <StyledThemeProvider theme={commonTheme}>
+                {children}
+            </StyledThemeProvider>
         </ThemeContext.Provider>
     );
 };

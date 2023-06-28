@@ -1,11 +1,14 @@
-import { useLayoutEffect, useState } from 'react';
+import { PropsWithChildren, useLayoutEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 
 type PortalProps = {
     wrapperId: string;
 };
 
-export const Portal: React.FC<PortalProps> = ({ children, wrapperId }) => {
+export const Portal: React.FC<PropsWithChildren<PortalProps>> = ({
+    children,
+    wrapperId,
+}) => {
     const [wrapperElement, setWrapperElement] = useState<Element | null>(null);
 
     useLayoutEffect(() => {

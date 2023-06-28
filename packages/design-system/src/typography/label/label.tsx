@@ -1,36 +1,27 @@
 import classNames from 'classnames';
-import { HTMLMotionProps, motion } from 'framer-motion';
 import { CSSProperties } from 'react';
-import { useTheme } from '../../theme';
 import styles from './label.module.scss';
+import { Box, BoxProps } from '../../layout';
 
-type LabelProps = {
+type LabelProps<TElement extends keyof JSX.IntrinsicElements = 'span'> = BoxProps<TElement> & {
     variant: 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'button';
     color?: string;
     className?: CSSProperties | string;
-} & HTMLMotionProps<'span'>;
+    as?: string;
+};
 
-export const Label: React.FC<LabelProps> = ({
-    children,
-    className,
-    variant,
-    color,
-    ...rest
-}) => {
+export const Label: React.FC<LabelProps> = ({ children, as = 'span', className, variant, color, ...rest }) => {
     // Define styling
-    const stylingName =
-        variant === 'button' ? 'button-text' : 'label-' + variant;
-    const colors = {
-        color: color ? 'var(--' + color + ')' : undefined,
-    };
+    const stylingName = variant === 'button' ? 'button-text' : 'label-' + variant;
 
     return (
-        <motion.span
-            style={colors}
+        <Box
+            color={color ? 'var(--' + color + ')' : undefined}
+            as={as}
             className={classNames(styles[stylingName], className)}
             {...rest}
         >
             {children}
-        </motion.span>
+        </Box>
     );
 };

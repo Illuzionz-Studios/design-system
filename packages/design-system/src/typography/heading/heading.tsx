@@ -1,24 +1,17 @@
 import classNames from 'classnames';
-import { HTMLMotionProps, motion, MotionStyle } from 'framer-motion';
-import { CSSProperties } from 'react';
+import { CSSProperties, PropsWithChildren } from 'react';
 import styles from './heading.module.scss';
+import { Box } from '../../layout';
 
-type HeadingProps = {
-    element: 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
-    variant:
-        | 'hero'
-        | 'display'
-        | 'heading-1'
-        | 'heading-2'
-        | 'heading-3'
-        | 'heading-4'
-        | 'heading-5';
+type HeadingProps<TElement extends keyof JSX.IntrinsicElements = 'h1'> = React.ComponentPropsWithoutRef<TElement> & {
+    element: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p' | 'span';
+    variant: 'hero' | 'display' | 'heading-1' | 'heading-2' | 'heading-3' | 'heading-4' | 'heading-5';
     color?: string;
     regular?: boolean;
     className?: CSSProperties | string;
-} & HTMLMotionProps<'h1'>;
+};
 
-export const Heading: React.FC<HeadingProps> = ({
+export const Heading: React.FC<PropsWithChildren<HeadingProps>> = ({
     children,
     className,
     element = 'h1',
@@ -29,70 +22,15 @@ export const Heading: React.FC<HeadingProps> = ({
 }) => {
     // Define styling
     const stylingName = variant + (regular ? '-regular' : '');
-    const colors: CSSProperties | MotionStyle = {
-        color: color ? 'var(--' + color + ')' : undefined,
-    };
 
-    switch (element) {
-        case 'h1':
-            return (
-                <motion.h1
-                    style={colors}
-                    className={classNames(styles[stylingName], className)}
-                    {...rest}
-                >
-                    {children}
-                </motion.h1>
-            );
-        case 'h2':
-            return (
-                <motion.h2
-                    style={colors}
-                    className={classNames(styles[stylingName], className)}
-                    {...rest}
-                >
-                    {children}
-                </motion.h2>
-            );
-        case 'h3':
-            return (
-                <motion.h3
-                    style={colors}
-                    className={classNames(styles[stylingName], className)}
-                    {...rest}
-                >
-                    {children}
-                </motion.h3>
-            );
-        case 'h4':
-            return (
-                <motion.h4
-                    style={colors}
-                    className={classNames(styles[stylingName], className)}
-                    {...rest}
-                >
-                    {children}
-                </motion.h4>
-            );
-        case 'h5':
-            return (
-                <motion.h5
-                    style={colors}
-                    className={classNames(styles[stylingName], className)}
-                    {...rest}
-                >
-                    {children}
-                </motion.h5>
-            );
-        default:
-            return (
-                <motion.h1
-                    style={colors}
-                    className={classNames(styles[stylingName], className)}
-                    {...rest}
-                >
-                    {children}
-                </motion.h1>
-            );
-    }
+    return (
+        <Box
+            color={color ? 'var(--' + color + ')' : undefined}
+            as={element}
+            className={classNames(styles[stylingName], className)}
+            {...rest}
+        >
+            {children}
+        </Box>
+    );
 };

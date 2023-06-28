@@ -1,27 +1,20 @@
-import { HTMLMotionProps, motion } from 'framer-motion';
 import { FieldContext } from '../field-context';
+import { PropsWithChildren } from 'react';
+import { Box, BoxProps } from '../../layout';
 
 type FieldProps = {
     id: string;
     name: string;
     error?: string;
-} & HTMLMotionProps<'div'>;
+} & BoxProps;
 
 /**
  * Expose all variables to a field
  */
-export const Field: React.FC<FieldProps> = ({
-    children,
-    id,
-    name,
-    error,
-    ...rest
-}) => {
+export const Field: React.FC<PropsWithChildren<FieldProps>> = ({ children, id, name, error, ...rest }) => {
     return (
-        <motion.div style={{ textAlign: 'left' }} {...rest}>
-            <FieldContext.Provider value={{ id, name, error }}>
-                {children}
-            </FieldContext.Provider>
-        </motion.div>
+        <Box textAlign="left" {...rest}>
+            <FieldContext.Provider value={{ id, name, error }}>{children}</FieldContext.Provider>
+        </Box>
     );
 };

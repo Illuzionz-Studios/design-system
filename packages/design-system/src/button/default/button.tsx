@@ -1,17 +1,24 @@
-import { CSSProperties } from 'react';
-import { ColorValues, useTheme } from '../../theme';
+import { CSSProperties, PropsWithChildren } from 'react';
 import { BaseButton, BaseButtonProps } from '../base/base-button';
-import styles from './button.module.scss';
-import classNames from 'classnames';
-
-type ButtonVariants = 'primary' | 'secondary' | 'tertiary';
+import { ButtonVariants, getHoverStyle, getVariantStyle } from './utils';
+import styled from 'styled-components';
 
 type ButtonProps = {
-    className?: CSSProperties | string;
     variant: ButtonVariants;
     size?: 'sm' | 'md' | 'lg';
-    colorScheme?: ColorValues;
 } & BaseButtonProps;
+
+export const ButtonWrapper = styled(BaseButton)<{
+    variant: ButtonVariants;
+}>`
+    transition: background 0.1s ease-in-out;
+
+    &:hover {
+        ${({ variant }) => getHoverStyle(variant)}
+    }
+
+    ${({ variant }) => getVariantStyle(variant)}
+`;
 
 const sizeDef = {
     sm: 1,
@@ -19,19 +26,10 @@ const sizeDef = {
     lg: 3,
 };
 
-export const Button: React.FC<ButtonProps> = ({
-    children,
-    className,
-    variant,
-    size = 'md',
-    colorScheme,
-    ...rest
-}) => {
-    let variantClass = 'button-' + variant;
-
+export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({ children, variant, size = 'md', ...rest }) => {
     return (
-        <BaseButton
-            className={classNames(styles[variantClass], className)}
+        <ButtonWrapper
+            variant={variant}
             paddingTop={sizeDef[size]}
             paddingBottom={sizeDef[size]}
             paddingLeft={4}
@@ -39,6 +37,6 @@ export const Button: React.FC<ButtonProps> = ({
             {...rest}
         >
             {children}
-        </BaseButton>
+        </ButtonWrapper>
     );
 };

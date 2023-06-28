@@ -1,11 +1,4 @@
-import {
-    Box,
-    ModalBody,
-    ModalFooter,
-    ModalHeader,
-    ModalLayout,
-    useTheme,
-} from '@illuzionz-studios/design-system';
+import { Box, ModalBody, ModalFooter, ModalHeader, ModalLayout, useTheme } from '@illuzionz-studios/design-system';
 import {
     Badge,
     Button,
@@ -54,24 +47,13 @@ export default function Home() {
     const { theme, toggleTheme } = useTheme();
     const [showModal, setShowModal] = useState(false);
 
-    const shades = ['string 1', 'string 2', 'string 3'];
-
     return (
         <>
             <Head>
                 <title>Illuzionz Studios Design System</title>
-                <meta
-                    name="description"
-                    content="The Docs for Illuzionz Studios Design System"
-                />
-                <meta
-                    name="viewport"
-                    content="width=device-width, initial-scale=1"
-                />
-                <link
-                    rel="icon"
-                    href="https://cdn.illuzionzstudios.com/logo/Secondary%20Logo-no-bg.png"
-                />
+                <meta name="description" content="The Docs for Illuzionz Studios Design System" />
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <link rel="icon" href="https://cdn.illuzionzstudios.com/logo/Secondary%20Logo-no-bg.png" />
             </Head>
             {showModal && <TestModal onClose={() => setShowModal(false)} />}
             <main>
@@ -92,35 +74,13 @@ export default function Home() {
                                 Buttons
                             </Heading>
                             <Flex direction="row" gap={4} alignItems="center">
-                                <Box
-                                    inlineStyle={{
-                                        background: 'blue',
-                                    }}
-                                >
-                                    Test
-                                </Box>
-                                <Button
-                                    variant="primary"
-                                    colorScheme="primary"
-                                    size="sm"
-                                    onClick={() => toggleTheme()}
-                                >
+                                <Button variant="primary" size="sm" onClick={() => toggleTheme()}>
                                     Primary Button
                                 </Button>
-                                <Button
-                                    variant="secondary"
-                                    colorScheme="primary"
-                                    onClick={() =>
-                                        setShowModal((prev) => !prev)
-                                    }
-                                >
+                                <Button variant="secondary" onClick={() => setShowModal((prev) => !prev)}>
                                     Secondary Button
                                 </Button>
-                                <Button
-                                    variant="tertiary"
-                                    colorScheme="primary"
-                                    size="lg"
-                                >
+                                <Button variant="tertiary" size="lg">
                                     Tertiary Button
                                 </Button>
                                 <TextButton>Text Button</TextButton>
@@ -133,40 +93,12 @@ export default function Home() {
                                 Inputs
                             </Heading>
 
-                            <Flex direction="row" flex="1" justifyContent="">
-                                {shades.map((colour, index) => {
-                                    return (
-                                        <Flex
-                                            key={index}
-                                            background="black"
-                                            borderColor="white"
-                                            color="white"
-                                            inlineStyle={{
-                                                flex: '1',
-                                            }}
-                                            paddingTop={4}
-                                            paddingBottom={4}
-                                            justifyContent="center"
-                                            onClick={(e) => {
-                                                navigator.clipboard.writeText(
-                                                    colour
-                                                );
-                                            }}
-                                        >
-                                            {colour}
-                                        </Flex>
-                                    );
-                                })}
-                            </Flex>
-
                             <TextField
                                 id="test-field"
                                 name="test-field"
                                 label="Test Field"
                                 value={testFieldValue}
-                                onChange={(e) =>
-                                    setTestFieldValue(e.currentTarget.value)
-                                }
+                                onChange={(e) => setTestFieldValue(e.currentTarget.value)}
                             />
 
                             <TextAreaField
@@ -174,12 +106,15 @@ export default function Home() {
                                 name="test-field"
                                 label="Test Field"
                                 value={testFieldValue}
-                                onChange={(e) =>
-                                    setTestFieldValue(e.currentTarget.value)
-                                }
+                                error="test"
+                                onChange={(e) => setTestFieldValue(e.currentTarget.value)}
                             />
 
                             <CheckboxInput
+                                checkedBg="color-bg-secondary"
+                                id="test"
+                                name="test"
+                                label="Include # when copying"
                                 checked={checked}
                                 onChange={(e) => setChecked((prev) => !prev)}
                             />

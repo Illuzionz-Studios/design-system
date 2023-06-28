@@ -3,15 +3,12 @@ import { Box } from '../../layout/box';
 import { Flex } from '../../layout/flex';
 import styles from './modal-footer.module.scss';
 
-type ModalFooterType = {
+type ModalFooterProps = {
     startActions: ReactNode;
     endActions: ReactNode;
 };
 
-export const ModalFooter: React.FC<ModalFooterType> = ({
-    startActions,
-    endActions,
-}) => {
+export const ModalFooter: React.FC<ModalFooterProps> = ({ startActions, endActions }) => {
     return (
         <Box
             className={styles.modalFooter}
@@ -21,11 +18,7 @@ export const ModalFooter: React.FC<ModalFooterType> = ({
             paddingRight={5}
             background="color-modal-footer-border"
         >
-            <Flex
-                direction="row"
-                alignItems="center"
-                justifyContent="space-between"
-            >
+            <Flex direction="row" alignItems="center" justifyContent="space-between">
                 <Flex direction="row" gap={1}>
                     {startActions}
                 </Flex>
