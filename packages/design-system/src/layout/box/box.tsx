@@ -74,7 +74,7 @@ export const Box = styled.div.withConfig({
 })<BoxProps>`
     // Color
     background: ${({ background }) => (background ? 'var(--' + background + ')' : undefined)};
-    color: ${(props) => props.color};
+    color: ${({ color }) => (color ? 'var(--' + color + ')' : undefined)};
 
     // Border
     border: ${(props) =>
