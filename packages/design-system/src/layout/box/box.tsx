@@ -117,8 +117,9 @@ export const Box = styled.div.withConfig({
     shouldForwardProp: (prop) => !transientProps[prop as keyof BoxProps],
 })<BoxProps>`
     // Color
-    background: ${({ background }) => (background ? 'var(--' + background + ')' : undefined)};
-    color: ${({ color }) => (color ? 'var(--' + color + ')' : undefined)};
+    background: ${({ background }) =>
+        background ? (background.startsWith('#') ? background : 'var(--' + background + ')') : undefined};
+    color: ${({ color }) => (color ? (color.startsWith('#') ? color : 'var(--' + color + ')') : undefined)};
 
     // Border
     border: ${(props) =>
