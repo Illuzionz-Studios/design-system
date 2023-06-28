@@ -1,21 +1,29 @@
 import { render, screen, within } from '@testing-library/react';
 import { FaArrowLeft } from 'react-icons/fa';
 import { BaseButton } from './base-button';
+import { TestThemeProvider } from '../../theme/test-theme-provider';
+import 'jest-styled-components';
 
 describe('Base Button', () => {
     it('renders text', () => {
-        render(<BaseButton>Test Button</BaseButton>);
+        const { getByText } = render(
+            <TestThemeProvider>
+                <BaseButton>Test Button</BaseButton>
+            </TestThemeProvider>
+        );
 
-        const baseButton = screen.getByText('Test Button');
+        const baseButton = getByText('Test Button');
 
         expect(baseButton).toBeInTheDocument();
     });
 
     it('renders icons', () => {
         render(
-            <BaseButton startIcon={<FaArrowLeft />} endIcon={<FaArrowLeft />}>
-                Test Button
-            </BaseButton>
+            <TestThemeProvider>
+                <BaseButton startIcon={<FaArrowLeft />} endIcon={<FaArrowLeft />}>
+                    Test Button
+                </BaseButton>
+            </TestThemeProvider>
         );
 
         const baseButton = screen.getByText('Test Button');
@@ -35,9 +43,11 @@ describe('Base Button', () => {
         };
 
         render(
-            <BaseButton disabled={true} onClick={onClick}>
-                Test Button
-            </BaseButton>
+            <TestThemeProvider>
+                <BaseButton disabled={true} onClick={onClick}>
+                    Test Button
+                </BaseButton>
+            </TestThemeProvider>
         );
 
         const baseButton = screen.getByText('Test Button');

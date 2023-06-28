@@ -1,10 +1,14 @@
 import { Badge } from './badge';
 import { cleanup, render, screen } from '@testing-library/react';
-import { commonTheme } from '../theme/common-theme';
+import { TestThemeProvider } from '../theme/test-theme-provider';
 
 describe('Badge', () => {
     it('renders badge with text', () => {
-        render(<Badge variant="default">Test Badge</Badge>);
+        render(
+            <TestThemeProvider>
+                <Badge variant="default">Test Badge</Badge>
+            </TestThemeProvider>
+        );
 
         const badge = screen.getByText('Test Badge');
 

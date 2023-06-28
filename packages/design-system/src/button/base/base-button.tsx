@@ -48,7 +48,7 @@ export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
                 {...rest}
             >
                 {startIcon && <IconWrapper>{startIcon}</IconWrapper>}
-                {children && <Label variant="button">{children}</Label>}
+                <Label variant="button">{children}</Label>
                 {endIcon && <IconWrapper>{endIcon}</IconWrapper>}
             </BaseButtonWrapper>
         );

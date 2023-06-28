@@ -104,8 +104,6 @@ const transientProps: Partial<Record<keyof BoxProps, boolean>> = {
     height: true,
     minHeight: true,
     maxHeight: true,
-
-    children: true,
 };
 
 /**
