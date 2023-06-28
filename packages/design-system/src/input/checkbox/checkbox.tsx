@@ -15,7 +15,7 @@ type CheckboxInputProps = {
 } & React.HTMLAttributes<HTMLInputElement>;
 
 const CheckboxWrapper = styled(Box)<{
-    checkedBg: string;
+    $checkedBg: string;
 }>`
     height: 1.25rem;
     width: 1.25rem;
@@ -27,8 +27,8 @@ const CheckboxWrapper = styled(Box)<{
     background: transparent;
 
     &:checked {
-        background-color: ${({ checkedBg }) => 'var(--' + checkedBg + ')'};
-        border: 1px solid ${({ checkedBg }) => 'var(--' + checkedBg + ')'};
+        background-color: ${({ $checkedBg }) => 'var(--' + $checkedBg + ')'};
+        border: 1px solid ${({ $checkedBg }) => 'var(--' + $checkedBg + ')'};
     }
 
     &:disabled {
@@ -92,7 +92,7 @@ export const CheckboxInput: React.FC<CheckboxInputProps> = ({
                 id={id}
                 name={name}
                 checked={checked}
-                checkedBg={checkedBg}
+                $checkedBg={checkedBg}
                 disabled={disabled}
                 onChange={onChange}
                 {...rest}

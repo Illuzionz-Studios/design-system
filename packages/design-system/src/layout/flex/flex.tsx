@@ -14,7 +14,13 @@ export type FlexProps<TElement extends keyof JSX.IntrinsicElements = 'div'> = Bo
 };
 
 const transientProps: Partial<Record<keyof FlexProps, boolean>> = {
+    alignItems: true,
+    justifyContent: true,
+    justifySelf: true,
+    inline: true,
     direction: true,
+    wrap: true,
+    gap: true,
 };
 
 /**

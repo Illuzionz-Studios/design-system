@@ -44,7 +44,6 @@ export type BoxProps<TElement extends keyof JSX.IntrinsicElements = 'div'> = Rea
         grow?: CSSProperties['flexGrow'];
         shrink?: CSSProperties['flexShrink'];
         flex?: CSSProperties['flex'];
-        textAlign?: CSSProperties['textAlign'];
 
         // Sizing
         width?: CSSProperties['width'];
@@ -58,10 +57,55 @@ export type BoxProps<TElement extends keyof JSX.IntrinsicElements = 'div'> = Rea
     };
 
 const transientProps: Partial<Record<keyof BoxProps, boolean>> = {
-    color: true,
+    pointerEvents: true,
+    display: true,
+    position: true,
+    zIndex: true,
+    overflow: true,
     cursor: true,
-    height: true,
+    transition: true,
+    transform: true,
+    animation: true,
+    textAlign: true,
+    textTransform: true,
+
+    // Colors
+    background: true,
+    color: true,
+
+    // Border
+    borderColor: true,
+    borderSize: true,
+    borderStyle: true,
+    radius: true,
+
+    // Padding & margin
+    padding: true,
+    paddingBottom: true,
+    paddingLeft: true,
+    paddingTop: true,
+    paddingRight: true,
+    margin: true,
+    marginBottom: true,
+    marginLeft: true,
+    marginTop: true,
+    marginRight: true,
+
+    // Flex child properties
+    basis: true,
+    grow: true,
+    shrink: true,
+    flex: true,
+
+    // Sizing
     width: true,
+    minWidth: true,
+    maxWidth: true,
+    height: true,
+    minHeight: true,
+    maxHeight: true,
+
+    children: true,
 };
 
 /**
@@ -78,13 +122,11 @@ export const Box = styled.div.withConfig({
 
     // Border
     border: ${(props) =>
-        props.borderColor
-            ? (props.borderSize ? props.borderSize : '1px') +
-              ' ' +
-              (props.borderStyle ? props.borderStyle : 'solid') +
-              ' ' +
-              (props.borderColor ? 'var(--' + props.borderColor + ')' : 'transparent')
-            : 'none'};
+        (props.borderSize ? props.borderSize : '1px') +
+        ' ' +
+        (props.borderStyle ? props.borderStyle : 'solid') +
+        ' ' +
+        (props.borderColor ? 'var(--' + props.borderColor + ')' : 'transparent')};
     border-radius: ${({ theme, radius }) => (radius ? theme.borderRadius[radius] : undefined)};
 
     // Padding

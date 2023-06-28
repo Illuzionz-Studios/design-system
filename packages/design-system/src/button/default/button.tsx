@@ -1,4 +1,4 @@
-import { CSSProperties, PropsWithChildren } from 'react';
+import { CSSProperties, PropsWithChildren, forwardRef } from 'react';
 import { BaseButton, BaseButtonProps } from '../base/base-button';
 import { ButtonVariants, getHoverStyle, getVariantStyle } from './utils';
 import styled from 'styled-components';
@@ -9,15 +9,15 @@ type ButtonProps = {
 } & BaseButtonProps;
 
 export const ButtonWrapper = styled(BaseButton)<{
-    variant: ButtonVariants;
+    $variant: ButtonVariants;
 }>`
     transition: background 0.1s ease-in-out;
 
     &:hover {
-        ${({ variant }) => getHoverStyle(variant)}
+        ${({ $variant }) => getHoverStyle($variant)}
     }
 
-    ${({ variant }) => getVariantStyle(variant)}
+    ${({ $variant }) => getVariantStyle($variant)}
 `;
 
 const sizeDef = {
@@ -26,17 +26,20 @@ const sizeDef = {
     lg: 3,
 };
 
-export const Button: React.FC<PropsWithChildren<ButtonProps>> = ({ children, variant, size = 'md', ...rest }) => {
-    return (
-        <ButtonWrapper
-            variant={variant}
-            paddingTop={sizeDef[size]}
-            paddingBottom={sizeDef[size]}
-            paddingLeft={4}
-            paddingRight={4}
-            {...rest}
-        >
-            {children}
-        </ButtonWrapper>
-    );
-};
+export const Button: React.FC<PropsWithChildren<ButtonProps>> = forwardRef<HTMLButtonElement, ButtonProps>(
+    ({ children, variant, size = 'md', ...rest }, ref) => {
+        return (
+            <ButtonWrapper
+                ref={ref}
+                $variant={variant}
+                paddingTop={sizeDef[size]}
+                paddingBottom={sizeDef[size]}
+                paddingLeft={4}
+                paddingRight={4}
+                {...rest}
+            >
+                {children}
+            </ButtonWrapper>
+        );
+    }
+);

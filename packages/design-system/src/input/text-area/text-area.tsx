@@ -14,7 +14,7 @@ type TextAreaProps = {
     hasError?: boolean;
 } & React.HTMLAttributes<HTMLTextAreaElement>;
 
-const TextAreaWrapper = styled(Box)<{ hasError?: boolean }>`
+const TextAreaWrapper = styled(Box)<{ $hasError?: boolean }>`
     background: transparent;
 
     width: 100%;
@@ -25,8 +25,8 @@ const TextAreaWrapper = styled(Box)<{ hasError?: boolean }>`
 
     &:focus {
         border: 1px solid
-            ${({ hasError }) =>
-                hasError ? 'var(--color-textfield-error-focus-border);' : 'var(--color-textfield-focus-border);'};
+            ${({ $hasError }) =>
+                $hasError ? 'var(--color-textfield-error-focus-border);' : 'var(--color-textfield-focus-border);'};
     }
 
     &:disabled {
@@ -41,7 +41,7 @@ const TextAreaWrapper = styled(Box)<{ hasError?: boolean }>`
 
     resize: vertical;
 
-    ${({ hasError }) => (hasError ? 'border: 1px solid var(--color-textfield-error-border);' : '')}
+    ${({ $hasError }) => ($hasError ? 'border: 1px solid var(--color-textfield-error-border);' : '')}
 `;
 
 /**
@@ -67,7 +67,7 @@ export const TextArea: React.FC<TextAreaProps> = ({ className, value, hasError, 
             paddingRight={4}
             borderColor="color-textfield-border"
             color="color-textfield-text"
-            hasError={hasError}
+            $hasError={hasError}
             name={name}
             required={required}
             rows={4}

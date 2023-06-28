@@ -12,7 +12,7 @@ type TextInputProps = {
     hasError?: boolean;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
-const TextInputWrapper = styled(Box)<{ hasError?: boolean }>`
+const TextInputWrapper = styled(Box)<{ $hasError?: boolean }>`
     background: transparent;
     width: 100%;
 
@@ -34,7 +34,7 @@ const TextInputWrapper = styled(Box)<{ hasError?: boolean }>`
         }
     }
 
-    ${({ hasError }) => (hasError ? 'border: 1px solid var(--color-textfield-error-border);' : '')}
+    ${({ $hasError }) => ($hasError ? 'border: 1px solid var(--color-textfield-error-border);' : '')}
 `;
 
 /**
@@ -60,7 +60,7 @@ export const TextInput: React.FC<TextInputProps> = ({ className, value, hasError
             paddingRight={4}
             borderColor="color-textfield-border"
             color="color-textfield-text"
-            hasError={hasError}
+            $hasError={hasError}
             type="text"
             name={name}
             disabled={disabled}
