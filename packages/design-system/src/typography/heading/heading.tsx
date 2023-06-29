@@ -6,7 +6,6 @@ import { Box } from '../../layout';
 type HeadingProps<TElement extends keyof JSX.IntrinsicElements = 'h1'> = React.ComponentPropsWithoutRef<TElement> & {
     element: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'p' | 'span';
     variant: 'hero' | 'display' | 'heading-1' | 'heading-2' | 'heading-3' | 'heading-4' | 'heading-5';
-    color?: string;
     regular?: boolean;
     className?: CSSProperties | string;
 };
@@ -16,7 +15,6 @@ export const Heading: React.FC<PropsWithChildren<HeadingProps>> = ({
     className,
     element = 'h1',
     variant,
-    color,
     regular = false,
     ...rest
 }) => {
@@ -24,12 +22,7 @@ export const Heading: React.FC<PropsWithChildren<HeadingProps>> = ({
     const stylingName = variant + (regular ? '-regular' : '');
 
     return (
-        <Box
-            color={color ? 'var(--' + color + ')' : undefined}
-            as={element}
-            className={classNames(styles[stylingName], className)}
-            {...rest}
-        >
+        <Box as={element} className={classNames(styles[stylingName], className)} {...rest}>
             {children}
         </Box>
     );

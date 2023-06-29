@@ -1,8 +1,7 @@
 import classNames from 'classnames';
-import { ChangeEventHandler, CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import { useField } from '../../field/field-context';
 import styles from './text-area.module.scss';
-import { TextInput } from '../text/text-input';
 import styled from 'styled-components';
 import { Box } from '../../layout';
 

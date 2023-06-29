@@ -1,6 +1,6 @@
 import { PropsWithChildren, ReactNode, forwardRef } from 'react';
 import { Label } from '../../typography';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { Flex } from '../../layout';
 import { FlexProps } from '../../layout/flex/flex';
 
@@ -29,28 +29,32 @@ export const BaseButtonWrapper = styled(Flex)<{ $fullWidth: boolean | undefined 
     }
 `;
 
-export const BaseButton = forwardRef<HTMLButtonElement, BaseButtonProps>(
-    ({ children, disabled = false, startIcon, endIcon, fullWidth, ...rest }, ref) => {
-        return (
-            <BaseButtonWrapper
-                ref={ref}
-                as="button"
-                type="button"
-                disabled={disabled}
-                aria-disabled={disabled}
-                radius="sm"
-                cursor="pointer"
-                alignItems="center"
-                padding={4}
-                gap={2}
-                justifyContent="center"
-                $fullWidth={fullWidth}
-                {...rest}
-            >
-                {startIcon && <IconWrapper>{startIcon}</IconWrapper>}
-                <Label variant="button">{children}</Label>
-                {endIcon && <IconWrapper>{endIcon}</IconWrapper>}
-            </BaseButtonWrapper>
-        );
-    }
-);
+export const BaseButton: React.FC<PropsWithChildren<BaseButtonProps>> = ({
+    children,
+    disabled = false,
+    startIcon,
+    endIcon,
+    fullWidth,
+    ...rest
+}) => {
+    return (
+        <BaseButtonWrapper
+            as="button"
+            type="button"
+            disabled={disabled}
+            aria-disabled={disabled}
+            radius="sm"
+            cursor="pointer"
+            alignItems="center"
+            padding={4}
+            gap={2}
+            justifyContent="center"
+            $fullWidth={fullWidth}
+            {...rest}
+        >
+            {startIcon && <IconWrapper>{startIcon}</IconWrapper>}
+            {children && <Label variant="button">{children}</Label>}
+            {endIcon && <IconWrapper>{endIcon}</IconWrapper>}
+        </BaseButtonWrapper>
+    );
+};

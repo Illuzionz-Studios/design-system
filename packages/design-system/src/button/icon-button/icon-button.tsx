@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { BaseButton, BaseButtonProps } from '../base/base-button';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 type ButtonProps = {
     icon: ReactNode;

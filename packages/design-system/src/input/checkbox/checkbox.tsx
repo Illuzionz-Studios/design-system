@@ -1,7 +1,7 @@
 import { ChangeEventHandler, useRef } from 'react';
 import { FaCheck } from 'react-icons/fa';
 import { Flex } from '../../layout/flex';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 import { Box } from '../../layout';
 import { FieldLabel } from '../../field/label/field-label';
 

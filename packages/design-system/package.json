@@ -14,7 +14,7 @@
     "peerDependencies": {
         "react": ">=18.0.0",
         "react-dom": ">=18.0.0",
-        "styled-components": ">=6"
+        "styled-components": ">=5"
     },
     "dependencies": {
         "@fontsource/inter": "^4.5.14",
@@ -42,7 +42,7 @@
         "jest-styled-components": "^7.1.1",
         "sass": "^1.63.6",
         "scss": "^0.2.4",
-        "styled-components": "^6.0.0-rc.6",
+        "styled-components": "^5.3.11",
         "ts-jest": "^29.0.5",
         "typescript": "4.6.3",
         "vite": "^4.3.9",

@@ -1,6 +1,6 @@
 import { PropsWithChildren } from 'react';
 import { BaseButton, BaseButtonProps } from '../base/base-button';
-import { styled } from 'styled-components';
+import styled from 'styled-components';
 
 const TextButtonWrapper = styled(BaseButton)`
     transition: 0.1s ease-in-out;
