@@ -35,6 +35,8 @@ jobs:
               run: npm ci
             - name: Test
               run: npm run test
+            - name: Build
+              run: lerna run build
             - name: Publish
               run: npm run pub
               env:
