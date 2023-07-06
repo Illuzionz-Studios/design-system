@@ -7,7 +7,8 @@
     "scripts": {
         "test": "lerna run test",
         "build": "lerna run build",
-        "pub": "lerna publish from-package --yes"
+        "pub": "lerna publish from-package --yes",
+        "version": "lerna version"
     },
     "devDependencies": {
         "lerna": "^6.4.1"

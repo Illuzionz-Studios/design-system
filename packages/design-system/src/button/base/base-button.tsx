@@ -11,7 +11,7 @@ export type BaseButtonProps<TElement extends keyof JSX.IntrinsicElements = 'butt
 };
 
 // Wrapper for a button icon to size it correctly
-const IconWrapper: React.FC<PropsWithChildren> = ({ children }) => (
+export const IconWrapper: React.FC<PropsWithChildren> = ({ children }) => (
     <Flex height="16px" width="auto" justifySelf="center" alignItems="center">
         {children}
     </Flex>
