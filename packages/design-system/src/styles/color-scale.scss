@@ -27,60 +27,51 @@
     @include generateVars('white', #ffffff);
     @include generateVars('black', #131313);
 
-    // Grays
-    @include generateVars('gray100', #fafafa);
-    @include generateVars('gray200', #e6e6e6);
-    @include generateVars('gray300', #cccccc);
-    @include generateVars('gray400', #b3b3b3);
-    @include generateVars('gray500', #999999);
-    @include generateVars('gray600', #808080);
-    @include generateVars('gray700', #666666);
-    @include generateVars('gray800', #4c4c4c);
-    @include generateVars('gray900', #333333);
-
     // Neutrals
-    @include generateVars('neutral100', #f6f6f9);
-    @include generateVars('neutral200', #dcdce4);
-    @include generateVars('neutral300', #c0c0cf);
-    @include generateVars('neutral400', #a5a5ba);
-    @include generateVars('neutral500', #8e8ea9);
-    @include generateVars('neutral600', #666687);
-    @include generateVars('neutral700', #4a4a6a);
-    @include generateVars('neutral800', #32324d);
-    @include generateVars('neutral900', #212134);
+    @include generateVars('neutral50', #fafafa);
+    @include generateVars('neutral100', #f1f2f3);
+    @include generateVars('neutral150', #e1e2e5);
+    @include generateVars('neutral200', #c8cacf);
+    @include generateVars('neutral300', #acafb8);
+    @include generateVars('neutral400', #9195a0);
+    @include generateVars('neutral500', #757a88);
+    @include generateVars('neutral600', #5e626d);
+    @include generateVars('neutral700', #464952);
+    @include generateVars('neutral800', #2f3136);
+    @include generateVars('neutral900', #1e2024);
 
     // Primary
-    @include generateVars('primary100', #e2e1f6);
-    @include generateVars('primary200', #c4c4ed);
-    @include generateVars('primary300', #a7a6e3);
-    @include generateVars('primary400', #8989da);
-    @include generateVars('primary500', #6c6bd1);
-    @include generateVars('primary600', #5656a7);
-    @include generateVars('primary700', #41407d);
-    @include generateVars('primary800', #2b2b54);
-    @include generateVars('primary900', #16152a);
+    @include generateVars('primary100', #dde0f7);
+    @include generateVars('primary200', #bbc1ee);
+    @include generateVars('primary300', #98a3e6);
+    @include generateVars('primary400', #7684dd);
+    @include generateVars('primary500', #5465d5);
+    @include generateVars('primary600', #4351aa);
+    @include generateVars('primary700', #323d80);
+    @include generateVars('primary800', #222855);
+    @include generateVars('primary900', #11142b);
 
     // Secondary
-    @include generateVars('secondary100', #ebeffa);
-    @include generateVars('secondary200', #c3d0ef);
-    @include generateVars('secondary300', #9bb0e4);
-    @include generateVars('secondary400', #7391d9);
-    @include generateVars('secondary500', #4b72ce);
-    @include generateVars('secondary600', #3158b4);
-    @include generateVars('secondary700', #26458c);
-    @include generateVars('secondary800', #1b3164);
-    @include generateVars('secondary900', #101d3c);
+    @include generateVars('secondary100', #e2e1f6);
+    @include generateVars('secondary200', #c4c4ed);
+    @include generateVars('secondary300', #a7a6e3);
+    @include generateVars('secondary400', #8989da);
+    @include generateVars('secondary500', #6c6bd1);
+    @include generateVars('secondary600', #5656a7);
+    @include generateVars('secondary700', #41407d);
+    @include generateVars('secondary800', #2b2b54);
+    @include generateVars('secondary900', #16152a);
 
-    // Tertiary
-    @include generateVars('tertiary100', #e3e1ef);
-    @include generateVars('tertiary200', #c8c3df);
-    @include generateVars('tertiary300', #aca5cf);
-    @include generateVars('tertiary400', #9187bf);
-    @include generateVars('tertiary500', #7569af);
-    @include generateVars('tertiary600', #5e548c);
-    @include generateVars('tertiary700', #463f69);
-    @include generateVars('tertiary800', #2f2a46);
-    @include generateVars('tertiary900', #171523);
+    // Info
+    @include generateVars('info100', #ebeffa);
+    @include generateVars('info200', #c3d0ef);
+    @include generateVars('info300', #9bb0e4);
+    @include generateVars('info400', #7391d9);
+    @include generateVars('info500', #4b72ce);
+    @include generateVars('info600', #3158b4);
+    @include generateVars('info700', #26458c);
+    @include generateVars('info800', #1b3164);
+    @include generateVars('info900', #101d3c);
 
     // Success
     @include generateVars('success100', #f3faf4);
