@@ -10,7 +10,8 @@ type TextInputProps = {
     disabled?: boolean;
     value: string;
     hasError?: boolean;
-    icon?: ReactNode;
+    startIcon?: ReactNode;
+    endIcon?: ReactNode;
 } & React.InputHTMLAttributes<HTMLInputElement>;
 
 const TextInputWrapper = styled(Box)`
@@ -48,7 +49,15 @@ const InputWrapper = styled(Flex)<{ $hasError?: boolean }>`
 /**
  * The raw styled text input
  */
-export const TextInput: React.FC<TextInputProps> = ({ className, value, hasError, icon, disabled, ...rest }) => {
+export const TextInput: React.FC<TextInputProps> = ({
+    className,
+    value,
+    hasError,
+    startIcon,
+    endIcon,
+    disabled,
+    ...rest
+}) => {
     const { id, name, error } = useField();
 
     let ariaDesc;
@@ -65,9 +74,9 @@ export const TextInput: React.FC<TextInputProps> = ({ className, value, hasError
             alignItems="center"
             radius="sm"
         >
-            {icon && (
+            {startIcon && (
                 <Flex paddingLeft={3} paddingRight={2} alignItems="center">
-                    {icon}
+                    {startIcon}
                 </Flex>
             )}
 
@@ -76,8 +85,8 @@ export const TextInput: React.FC<TextInputProps> = ({ className, value, hasError
                 className={classNames(styles.input, className)}
                 paddingTop={2}
                 paddingBottom={2}
-                paddingLeft={icon ? 0 : 4}
-                paddingRight={4}
+                paddingLeft={startIcon ? 0 : 4}
+                paddingRight={endIcon ? 0 : 4}
                 color="color-textfield-text"
                 type="text"
                 name={name}
@@ -87,6 +96,12 @@ export const TextInput: React.FC<TextInputProps> = ({ className, value, hasError
                 value={value}
                 {...rest}
             />
+
+            {endIcon && (
+                <Flex paddingLeft={2} paddingRight={3} alignItems="center">
+                    {endIcon}
+                </Flex>
+            )}
         </InputWrapper>
     );
 };

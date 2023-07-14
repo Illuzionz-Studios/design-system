@@ -13,7 +13,7 @@ import {
 } from '@illuzionz-studios/design-system';
 import Head from 'next/head';
 import { useState } from 'react';
-import { FaTimes } from 'react-icons/fa';
+import { FaSearch, FaTimes } from 'react-icons/fa';
 
 type TestModalType = {
     onClose: () => void;
@@ -29,12 +29,12 @@ const TestModal: React.FC<TestModalType> = ({ onClose }) => (
         <ModalBody></ModalBody>
         <ModalFooter
             startActions={[
-                <Button key={1} variant="primary">
+                <Button key={1} variant="primary" size="sm">
                     Test
                 </Button>,
             ]}
             endActions={[
-                <Button key={1} variant="primary">
+                <Button key={1} variant="primary" size="sm">
                     Test
                 </Button>,
             ]}
@@ -64,7 +64,7 @@ export default function Home() {
                                 Badges
                             </Heading>
                             <Flex direction="row" gap={4} alignItems="center">
-                                <Badge variant="secondary">Default</Badge>
+                                <Badge variant="default">Default</Badge>
                                 <Badge variant="primary">Active</Badge>
                             </Flex>
                         </Flex>
@@ -98,6 +98,8 @@ export default function Home() {
                                 name="test-field"
                                 label="Test Field"
                                 value={testFieldValue}
+                                startIcon={<FaSearch color="gray" />}
+                                endIcon={<FaSearch color="gray" />}
                                 onChange={(e) => setTestFieldValue(e.currentTarget.value)}
                             />
 
