@@ -8,6 +8,7 @@ import {
     Heading,
     IconButton,
     TextAreaField,
+    Divider,
     TextButton,
     TextField,
 } from '@illuzionz-studios/design-system';
@@ -59,20 +60,22 @@ export default function Home() {
             <main>
                 <Container>
                     <Flex direction="column" gap={7} paddingTop={6}>
-                        <Flex direction="column" gap={4}>
+                        <Flex direction="column" gap={3}>
                             <Heading element="h2" variant="heading-2">
                                 Badges
                             </Heading>
+                            <Divider color="neutral100" />
                             <Flex direction="row" gap={4} alignItems="center">
                                 <Badge variant="default">Default</Badge>
                                 <Badge variant="primary">Active</Badge>
                             </Flex>
                         </Flex>
 
-                        <Flex direction="column" gap={4}>
+                        <Flex direction="column" gap={3}>
                             <Heading element="h2" variant="heading-2">
                                 Buttons
                             </Heading>
+                            <Divider color="neutral100" />
                             <Flex direction="row" gap={4} alignItems="center">
                                 <Button variant="primary" size="sm" onClick={() => toggleTheme()}>
                                     Primary Button
@@ -88,18 +91,17 @@ export default function Home() {
                             </Flex>
                         </Flex>
 
-                        <Flex direction="column" gap={4}>
+                        <Flex direction="column" gap={3}>
                             <Heading element="h2" variant="heading-2">
                                 Inputs
                             </Heading>
-
+                            <Divider color="neutral100" />
                             <TextField
                                 id="test-field"
                                 name="test-field"
                                 label="Test Field"
                                 value={testFieldValue}
-                                startIcon={<FaSearch color="gray" />}
-                                endIcon={<FaSearch color="gray" />}
+                                startIcon={<FaSearch color="var(--color-bg-primary)" />}
                                 onChange={(e) => setTestFieldValue(e.currentTarget.value)}
                             />
 
