@@ -118,9 +118,7 @@ export default function Home() {
                                 label="Test Field"
                                 value={testFieldValue}
                                 error="test"
-                                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-                                    setTestFieldValue(e.currentTarget.value)
-                                }
+                                onChange={(e) => setTestFieldValue(e.currentTarget.value)}
                             />
 
                             <CheckboxInput
