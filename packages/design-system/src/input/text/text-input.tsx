@@ -5,7 +5,7 @@ import styles from './text-input.module.scss';
 import styled from 'styled-components';
 import { Box, Flex } from '../../layout';
 
-type TextInputProps = {
+export type TextInputProps = {
     className?: CSSProperties | string;
     disabled?: boolean;
     value: string;
@@ -39,8 +39,10 @@ const InputWrapper = styled(Flex)<{ $hasError?: boolean }>`
         background-color: var(--color-textfield-disabled-bg);
     }
 
-    &:focus {
-        border: 1px solid var(--color-textfield-focus-border);
+    &:focus-within {
+        border: 1px solid
+            ${({ $hasError }) =>
+                $hasError ? 'var(--color-textfield-error-focus-border);' : 'var(--color-textfield-focus-border);'};
     }
 
     ${({ $hasError }) => ($hasError ? 'border: 1px solid var(--color-textfield-error-border);' : '')}

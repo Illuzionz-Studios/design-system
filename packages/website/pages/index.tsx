@@ -1,5 +1,10 @@
-import { Box, ModalBody, ModalFooter, ModalHeader, ModalLayout, useTheme } from '@illuzionz-studios/design-system';
 import {
+    Box,
+    ModalBody,
+    ModalFooter,
+    ModalHeader,
+    ModalLayout,
+    useTheme,
     Badge,
     Button,
     CheckboxInput,
@@ -102,7 +107,9 @@ export default function Home() {
                                 label="Test Field"
                                 value={testFieldValue}
                                 startIcon={<FaSearch color="var(--color-bg-primary)" />}
-                                onChange={(e) => setTestFieldValue(e.currentTarget.value)}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                                    setTestFieldValue(e.currentTarget.value)
+                                }
                             />
 
                             <TextAreaField
@@ -111,7 +118,9 @@ export default function Home() {
                                 label="Test Field"
                                 value={testFieldValue}
                                 error="test"
-                                onChange={(e) => setTestFieldValue(e.currentTarget.value)}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                                    setTestFieldValue(e.currentTarget.value)
+                                }
                             />
 
                             <CheckboxInput
@@ -120,7 +129,7 @@ export default function Home() {
                                 name="test"
                                 label="Include # when copying"
                                 checked={checked}
-                                onChange={(e) => setChecked((prev) => !prev)}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setChecked((prev) => !prev)}
                             />
                         </Flex>
                     </Flex>
