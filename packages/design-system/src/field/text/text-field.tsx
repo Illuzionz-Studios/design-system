@@ -4,15 +4,13 @@ import { Field } from '../field/field';
 import { FieldError } from '../error/field-error';
 import { FieldLabel } from '../label/field-label';
 import { useField } from '../field-context';
-import { TextInput } from '../../input/text';
+import { TextInput, TextInputProps } from '../../input/text';
 import { Flex } from '../../layout/flex';
 import { Box } from '../../layout';
 
 type FieldInputProps = {
     required?: boolean;
-    disabled?: boolean;
-    value: string;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+} & TextInputProps;
 
 /**
  * Expose all variables to a field
@@ -24,14 +22,11 @@ export const FieldInput: React.FC<FieldInputProps> = ({ required, disabled, valu
 };
 
 type TextFieldProps = {
-    required?: boolean;
-    disabled?: boolean;
-    value: string;
     name: string;
     id: string;
     label?: string;
     error?: string;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+} & FieldInputProps;
 
 /**
  * Master component for a field of text

@@ -1,5 +1,10 @@
-import { Box, ModalBody, ModalFooter, ModalHeader, ModalLayout, useTheme } from '@illuzionz-studios/design-system';
 import {
+    Box,
+    ModalBody,
+    ModalFooter,
+    ModalHeader,
+    ModalLayout,
+    useTheme,
     Badge,
     Button,
     CheckboxInput,
@@ -8,12 +13,13 @@ import {
     Heading,
     IconButton,
     TextAreaField,
+    Divider,
     TextButton,
     TextField,
 } from '@illuzionz-studios/design-system';
 import Head from 'next/head';
 import { useState } from 'react';
-import { FaTimes } from 'react-icons/fa';
+import { FaSearch, FaTimes } from 'react-icons/fa';
 
 type TestModalType = {
     onClose: () => void;
@@ -29,12 +35,12 @@ const TestModal: React.FC<TestModalType> = ({ onClose }) => (
         <ModalBody></ModalBody>
         <ModalFooter
             startActions={[
-                <Button key={1} variant="primary">
+                <Button key={1} variant="primary" size="sm">
                     Test
                 </Button>,
             ]}
             endActions={[
-                <Button key={1} variant="primary">
+                <Button key={1} variant="primary" size="sm">
                     Test
                 </Button>,
             ]}
@@ -59,20 +65,22 @@ export default function Home() {
             <main>
                 <Container>
                     <Flex direction="column" gap={7} paddingTop={6}>
-                        <Flex direction="column" gap={4}>
+                        <Flex direction="column" gap={3}>
                             <Heading element="h2" variant="heading-2">
                                 Badges
                             </Heading>
+                            <Divider color="neutral100" />
                             <Flex direction="row" gap={4} alignItems="center">
-                                <Badge variant="secondary">Default</Badge>
+                                <Badge variant="default">Default</Badge>
                                 <Badge variant="primary">Active</Badge>
                             </Flex>
                         </Flex>
 
-                        <Flex direction="column" gap={4}>
+                        <Flex direction="column" gap={3}>
                             <Heading element="h2" variant="heading-2">
                                 Buttons
                             </Heading>
+                            <Divider color="neutral100" />
                             <Flex direction="row" gap={4} alignItems="center">
                                 <Button variant="primary" size="sm" onClick={() => toggleTheme()}>
                                     Primary Button
@@ -88,17 +96,20 @@ export default function Home() {
                             </Flex>
                         </Flex>
 
-                        <Flex direction="column" gap={4}>
+                        <Flex direction="column" gap={3}>
                             <Heading element="h2" variant="heading-2">
                                 Inputs
                             </Heading>
-
+                            <Divider color="neutral100" />
                             <TextField
                                 id="test-field"
                                 name="test-field"
                                 label="Test Field"
                                 value={testFieldValue}
-                                onChange={(e) => setTestFieldValue(e.currentTarget.value)}
+                                startIcon={<FaSearch color="var(--color-bg-primary)" />}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                                    setTestFieldValue(e.currentTarget.value)
+                                }
                             />
 
                             <TextAreaField
@@ -107,7 +118,9 @@ export default function Home() {
                                 label="Test Field"
                                 value={testFieldValue}
                                 error="test"
-                                onChange={(e) => setTestFieldValue(e.currentTarget.value)}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                                    setTestFieldValue(e.currentTarget.value)
+                                }
                             />
 
                             <CheckboxInput
@@ -116,7 +129,7 @@ export default function Home() {
                                 name="test"
                                 label="Include # when copying"
                                 checked={checked}
-                                onChange={(e) => setChecked((prev) => !prev)}
+                                onChange={(e: React.ChangeEvent<HTMLInputElement>) => setChecked((prev) => !prev)}
                             />
                         </Flex>
                     </Flex>

@@ -24,8 +24,8 @@
         @include variantStyle('secondary');
     }
 
-    &-tertiary {
-        @include variantStyle('tertiary');
+    &-info {
+        @include variantStyle('info');
     }
 
     &-success {
