@@ -12,7 +12,7 @@ permissions:
 
 jobs:
     publish-npm:
-        name: Publish
+        name: Run Checks
         runs-on: ubuntu-latest
         steps:
             - name: Checkout
