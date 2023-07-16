@@ -11,7 +11,7 @@ permissions:
     pull-requests: write # for comments
 
 jobs:
-    publish-npm:
+    tests:
         name: Run Checks
         runs-on: ubuntu-latest
         steps:
