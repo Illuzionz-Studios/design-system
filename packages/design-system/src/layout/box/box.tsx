@@ -121,11 +121,16 @@ export const Box = styled.div.withConfig({
 
     // Border
     border: ${(props) =>
-        (props.borderSize ? props.borderSize : '1px') +
-        ' ' +
-        (props.borderStyle ? props.borderStyle : 'solid') +
-        ' ' +
-        (props.borderColor ? 'var(--' + props.borderColor + ')' : 'transparent')};
+        props.borderSize || props.borderStyle || props.borderColor
+            ? (props.borderSize ? props.borderSize : '1px') +
+              ' ' +
+              (props.borderStyle ? props.borderStyle : 'solid') +
+              ' ' +
+              (props.borderColor ? 'var(--' + props.borderColor + ')' : 'transparent')
+            : undefined};
+    /* border-width: ${({ borderSize }) => borderSize};
+    border-style: ${({ borderStyle }) => borderStyle};
+    border-color: ${({ borderColor }) => borderColor}; */
     border-radius: ${({ theme, radius }) => (radius ? theme.borderRadius[radius] : undefined)};
 
     // Padding
