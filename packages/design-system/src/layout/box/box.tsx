@@ -128,9 +128,6 @@ export const Box = styled.div.withConfig({
               ' ' +
               (props.borderColor ? 'var(--' + props.borderColor + ')' : 'transparent')
             : undefined};
-    /* border-width: ${({ borderSize }) => borderSize};
-    border-style: ${({ borderStyle }) => borderStyle};
-    border-color: ${({ borderColor }) => borderColor}; */
     border-radius: ${({ theme, radius }) => (radius ? theme.borderRadius[radius] : undefined)};
 
     // Padding
