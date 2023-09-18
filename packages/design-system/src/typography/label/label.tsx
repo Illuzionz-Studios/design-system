@@ -3,7 +3,7 @@ import { CSSProperties } from 'react';
 import styles from './label.module.scss';
 import { Box, BoxProps } from '../../layout';
 
-type LabelProps<TElement extends keyof JSX.IntrinsicElements = 'span'> = BoxProps<TElement> & {
+export type LabelProps<TElement extends keyof JSX.IntrinsicElements = 'span'> = BoxProps<TElement> & {
     variant: 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'button';
     className?: CSSProperties | string;
     as?: string;
