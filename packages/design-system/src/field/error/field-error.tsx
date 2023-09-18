@@ -4,14 +4,14 @@ import { useField } from '../field-context';
 /**
  * Displays field error
  */
-export const FieldError: React.FC<LabelProps> = ({ ...rest }) => {
+export const FieldError: React.FC = () => {
     const { id, name, error } = useField();
 
     // Only render if error
     if (!error || typeof error !== 'string') return null;
 
     return (
-        <Label color="color-text-error" {...rest} variant="sm" id={`${id}-error`}>
+        <Label variant="sm" color="color-text-error" id={`${id}-error`}>
             {error}
         </Label>
     );

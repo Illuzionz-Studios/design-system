@@ -3,9 +3,9 @@ import { Label, LabelProps } from '../../typography';
 /**
  * Label describing a field
  */
-export const FieldLabel: React.FC<LabelProps> = ({ children, ...rest }) => {
+export const FieldLabel: React.FC<React.LabelHTMLAttributes<HTMLLabelElement>> = ({ children, ...rest }) => {
     return (
-        <Label as="label" {...rest} variant="md">
+        <Label as="label" variant="md" {...rest}>
             {children}
         </Label>
     );
