@@ -1,11 +1,11 @@
-import { Label } from '../../typography';
+import { Label, LabelProps } from '../../typography';
 
 /**
  * Label describing a field
  */
-export const FieldLabel: React.FC<React.LabelHTMLAttributes<HTMLLabelElement>> = ({ children, ...rest }) => {
+export const FieldLabel: React.FC<LabelProps> = ({ children, ...rest }) => {
     return (
-        <Label as="label" variant="md" {...rest}>
+        <Label as="label" {...rest} variant="md">
             {children}
         </Label>
     );

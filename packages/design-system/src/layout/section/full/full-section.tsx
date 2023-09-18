@@ -1,9 +1,8 @@
-import React, { PropsWithChildren } from 'react';
-import { Flex } from '../../flex';
+import { Flex, FlexProps } from '../../flex';
 
-export const FullSection: React.FC<PropsWithChildren> = ({ children }) => {
+export const FullSection: React.FC<FlexProps> = ({ children, ...rest }) => {
     return (
-        <Flex position="relative" height="var(--vh)" width="100vw" direction="column" margin="auto auto">
+        <Flex position="relative" height="var(--vh)" width="100vw" direction="column" margin="auto auto" {...rest}>
             {children}
         </Flex>
     );

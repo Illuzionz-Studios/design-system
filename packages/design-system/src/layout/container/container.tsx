@@ -1,11 +1,25 @@
-import { PropsWithChildren } from 'react';
+import { CSSProperties, PropsWithChildren } from 'react';
 import styles from './container.module.scss';
+import { Box, BoxProps } from '../box';
+import classNames from 'classnames';
 
-export const Container: React.FC<PropsWithChildren> = ({ children }) => {
-    return <div className={styles.container}>{children}</div>;
+type ContainerProps = BoxProps & {
+    className?: CSSProperties;
+};
+
+export const Container: React.FC<ContainerProps> = ({ children, className, ...rest }) => {
+    return (
+        <Box className={classNames(styles.container, className)} {...rest}>
+            {children}
+        </Box>
+    );
 };
 
 // Container that wraps content tightly
-export const TightContainer: React.FC<PropsWithChildren> = ({ children }) => {
-    return <div className={styles.containerTight}>{children}</div>;
+export const TightContainer: React.FC<ContainerProps> = ({ children, className, ...rest }) => {
+    return (
+        <Box className={classNames(styles.container, className)} {...rest}>
+            {children}
+        </Box>
+    );
 };

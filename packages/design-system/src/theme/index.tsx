@@ -1,9 +1,4 @@
-import React, {
-    PropsWithChildren,
-    createContext,
-    useContext,
-    useState,
-} from 'react';
+import React, { PropsWithChildren, createContext, useContext, useState } from 'react';
 import { useEffect } from 'react';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { IconButton } from '../button';
@@ -51,9 +46,7 @@ export const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
 
     return (
         <ThemeContext.Provider value={{ isDarkTheme, toggleTheme }}>
-            <StyledThemeProvider theme={commonTheme}>
-                {children}
-            </StyledThemeProvider>
+            <StyledThemeProvider theme={commonTheme}>{children}</StyledThemeProvider>
         </ThemeContext.Provider>
     );
 };
@@ -62,12 +55,7 @@ export const ThemeProvider: React.FC<PropsWithChildren> = ({ children }) => {
 export const ThemeSwitcher = () => {
     const { isDarkTheme, toggleTheme } = useContext(ThemeContext);
 
-    return (
-        <IconButton
-            onClick={toggleTheme}
-            icon={isDarkTheme ? <FaSun /> : <FaMoon />}
-        />
-    );
+    return <IconButton onClick={toggleTheme} icon={isDarkTheme ? <FaSun /> : <FaMoon />} />;
 };
 
 // Use theme constants
@@ -78,25 +66,12 @@ export function useTheme() {
     return { theme, toggleTheme };
 }
 
-export type ColorValues =
-    | PrimaryColorValues
-    | 'gray'
-    | 'neutral'
-    | 'white'
-    | 'black'
-    | undefined;
+export type ColorValues = PrimaryColorValues | 'gray' | 'neutral' | 'white' | 'black' | undefined;
 
 // Primary colour 'themes' for components who can
 // alter primary appearance.
 // Default refers to their default colour
-export type PrimaryColorValues =
-    | 'default'
-    | 'primary'
-    | 'secondary'
-    | 'tertiary'
-    | 'success'
-    | 'warning'
-    | 'error';
+export type PrimaryColorValues = 'default' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error';
 
 // Return the colour defintiion from css variable
 export function cssColor(color: string) {
