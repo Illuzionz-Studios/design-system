@@ -30,7 +30,7 @@ const transientProps: Partial<Record<keyof FlexProps, boolean>> = {
 export const Flex = styled(Box).withConfig({
     shouldForwardProp: (prop) => !transientProps[prop as keyof FlexProps],
 })<FlexProps>`
-    align-items: ${({ alignItems = 'flex-start' }) => alignItems};
+    align-items: ${({ alignItems }) => alignItems};
     justify-content: ${({ justifyContent }) => justifyContent};
     justify-self: ${({ justifySelf }) => justifySelf};
     display: ${({ display = 'flex', inline }) => (inline ? 'inline-flex' : display)};
