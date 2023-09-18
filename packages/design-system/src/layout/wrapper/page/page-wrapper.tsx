@@ -1,6 +1,9 @@
-import { PropsWithChildren } from 'react';
-import { Box } from '../../box';
+import { Box, BoxProps } from '../../box';
 
-export const PageWrapper: React.FC<PropsWithChildren> = ({ children }) => {
-    return <Box minHeight="var(--vh)">{children}</Box>;
+export const PageWrapper: React.FC<BoxProps> = ({ children, ...rest }) => {
+    return (
+        <Box minHeight="var(--vh)" {...rest}>
+            {children}
+        </Box>
+    );
 };

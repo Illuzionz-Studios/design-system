@@ -1,12 +1,12 @@
-import { Box } from './box';
+import { Box, BoxProps } from './box';
 
-type DividerProps = {
+type DividerProps = BoxProps & {
     color: string;
 };
 
-export const Divider: React.FC<DividerProps> = ({ color = 'neutral150' }) => {
+export const Divider: React.FC<DividerProps> = ({ color = 'neutral150', ...rest }) => {
     return (
-        <Box height="1px" width="100%" background={color} radius="lg">
+        <Box height="1px" width="100%" background={color} radius="lg" {...rest}>
             {' '}
         </Box>
     );

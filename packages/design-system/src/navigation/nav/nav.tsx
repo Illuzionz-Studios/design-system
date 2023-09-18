@@ -6,7 +6,7 @@ import styles from './nav.module.scss';
 import { cssColor } from '../../theme';
 
 type NavProps = {
-    colorScheme: 'primary' | 'secondary' | 'tertiary';
+    colorScheme: 'primary' | 'secondary';
     logo: ReactNode; // Main logo element
     links: ReactNode[]; // All links inc dropdown links
 };
@@ -50,10 +50,7 @@ export const Nav: React.FC<NavProps> = ({ colorScheme, logo, links }) => {
             </Container>
             <AnimatePresence>
                 {expandedNav && (
-                    <ul
-                        id="expanded-nav"
-                        onClick={() => setExpandedNav((prev) => !prev)}
-                    >
+                    <ul id="expanded-nav" onClick={() => setExpandedNav((prev) => !prev)}>
                         <motion.li
                             onClick={(e) => e.stopPropagation()}
                             className={styles.expandedLinks}
