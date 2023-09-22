@@ -11,7 +11,7 @@ import React from 'react';
 
 type FieldInputProps = {
     required?: boolean;
-    inputRef: ForwardedRef<HTMLInputElement>;
+    inputRef?: ForwardedRef<HTMLInputElement>;
 } & TextInputProps;
 
 /**

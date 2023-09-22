@@ -11,7 +11,7 @@ type FieldAreaInputProps = {
     required?: boolean;
     disabled?: boolean;
     value: string;
-    inputRef: ForwardedRef<HTMLTextAreaElement>;
+    inputRef?: ForwardedRef<HTMLTextAreaElement>;
 } & React.HTMLAttributes<HTMLTextAreaElement>;
 
 /**
