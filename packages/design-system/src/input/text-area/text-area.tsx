@@ -1,9 +1,10 @@
 import classNames from 'classnames';
-import { CSSProperties } from 'react';
+import { CSSProperties, ForwardedRef } from 'react';
 import { useField } from '../../field/field-context';
 import styles from './text-area.module.scss';
 import styled from 'styled-components';
 import { Box } from '../../layout';
+import React from 'react';
 
 type TextAreaProps = {
     className?: CSSProperties | string;
@@ -11,7 +12,7 @@ type TextAreaProps = {
     disabled?: boolean;
     value: string;
     hasError?: boolean;
-} & React.HTMLAttributes<HTMLTextAreaElement>;
+} & React.ComponentPropsWithRef<'textarea'>;
 
 const TextAreaWrapper = styled(Box)<{ $hasError?: boolean }>`
     background: transparent;
@@ -46,36 +47,39 @@ const TextAreaWrapper = styled(Box)<{ $hasError?: boolean }>`
 /**
  * The raw styled text input
  */
-export const TextArea: React.FC<TextAreaProps> = ({ className, value, hasError, required, disabled, ...rest }) => {
-    const { id, name, error } = useField();
+export const TextArea: React.FC<TextAreaProps> = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
+    ({ className, value, hasError, required, disabled, ...rest }, ref) => {
+        const { id, name, error } = useField();
 
-    let ariaDesc;
+        let ariaDesc;
 
-    if (hasError) {
-        ariaDesc = `${id}-error`;
+        if (hasError) {
+            ariaDesc = `${id}-error`;
+        }
+
+        return (
+            <TextAreaWrapper
+                ref={ref}
+                as="textarea"
+                radius="sm"
+                className={classNames(styles.input, className)}
+                paddingTop={2}
+                paddingBottom={2}
+                paddingLeft={4}
+                paddingRight={4}
+                borderColor="color-textfield-border"
+                color="color-textfield-text"
+                $hasError={hasError}
+                name={name}
+                required={required}
+                rows={4}
+                cols={50}
+                disabled={disabled}
+                aria-disabled={disabled}
+                aria-describedby={ariaDesc}
+                value={value}
+                {...rest}
+            />
+        );
     }
-
-    return (
-        <TextAreaWrapper
-            as="textarea"
-            radius="sm"
-            className={classNames(styles.input, className)}
-            paddingTop={2}
-            paddingBottom={2}
-            paddingLeft={4}
-            paddingRight={4}
-            borderColor="color-textfield-border"
-            color="color-textfield-text"
-            $hasError={hasError}
-            name={name}
-            required={required}
-            rows={4}
-            cols={50}
-            disabled={disabled}
-            aria-disabled={disabled}
-            aria-describedby={ariaDesc}
-            value={value}
-            {...rest}
-        />
-    );
-};
+);

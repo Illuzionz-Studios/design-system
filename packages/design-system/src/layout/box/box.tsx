@@ -2,7 +2,7 @@ import { CSSProperties } from 'react';
 import styled from 'styled-components';
 
 // Allow css rules
-export type BoxProps<TElement extends keyof JSX.IntrinsicElements = 'div'> = React.ComponentPropsWithoutRef<TElement> &
+export type BoxProps<TElement extends keyof JSX.IntrinsicElements = 'div'> = React.ComponentPropsWithRef<TElement> &
     Pick<
         CSSProperties,
         | 'pointerEvents'

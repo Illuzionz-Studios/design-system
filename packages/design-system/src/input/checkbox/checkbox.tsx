@@ -1,4 +1,4 @@
-import { ChangeEventHandler, useRef } from 'react';
+import React, { ChangeEventHandler, useRef } from 'react';
 import { FaCheck } from 'react-icons/fa';
 import { Flex } from '../../layout/flex';
 import styled from 'styled-components';
@@ -69,35 +69,28 @@ const CheckWrapper = styled(FaCheck)`
 /**
  * Base check box styling. Exposes control variables
  */
-export const CheckboxInput: React.FC<CheckboxInputProps> = ({
-    id,
-    name,
-    checked,
-    checkedBg = 'color-checkbox-active-bg',
-    label,
-    disabled,
-    onChange,
-    ...rest
-}) => {
-    const checkBox = useRef<HTMLInputElement>(null);
+export const CheckboxInput: React.FC<CheckboxInputProps> = React.forwardRef<HTMLDivElement, CheckboxInputProps>(
+    ({ id, name, checked, checkedBg = 'color-checkbox-active-bg', label, disabled, onChange, ...rest }, ref) => {
+        const checkBox = useRef<HTMLInputElement>(null);
 
-    return (
-        <Flex gap={2}>
-            {checked && <CheckWrapper aria-disabled={disabled} onClick={() => checkBox?.current?.click()} />}
-            <CheckboxWrapper
-                as="input"
-                radius="sm"
-                type="checkbox"
-                ref={checkBox}
-                id={id}
-                name={name}
-                checked={checked}
-                $checkedBg={checkedBg}
-                disabled={disabled}
-                onChange={onChange}
-                {...rest}
-            />
-            {label && <FieldLabel>{label}</FieldLabel>}
-        </Flex>
-    );
-};
+        return (
+            <Flex ref={ref} gap={2}>
+                {checked && <CheckWrapper aria-disabled={disabled} onClick={() => checkBox?.current?.click()} />}
+                <CheckboxWrapper
+                    as="input"
+                    radius="sm"
+                    type="checkbox"
+                    ref={checkBox}
+                    id={id}
+                    name={name}
+                    checked={checked}
+                    $checkedBg={checkedBg}
+                    disabled={disabled}
+                    onChange={onChange}
+                    {...rest}
+                />
+                {label && <FieldLabel>{label}</FieldLabel>}
+            </Flex>
+        );
+    }
+);

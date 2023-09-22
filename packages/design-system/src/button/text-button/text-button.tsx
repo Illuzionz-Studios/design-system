@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { BaseButton, BaseButtonProps } from '../base/base-button';
 import styled from 'styled-components';
+import React from 'react';
 
 const TextButtonWrapper = styled(BaseButton)`
     transition: 0.1s ease-in-out;
@@ -27,18 +28,21 @@ const TextButtonWrapper = styled(BaseButton)`
     }
 `;
 
-export const TextButton: React.FC<PropsWithChildren<BaseButtonProps>> = ({ children, ...rest }) => {
-    return (
-        <TextButtonWrapper
-            color="color-button-primary"
-            background="transparent"
-            paddingTop={1}
-            paddingBottom={1}
-            paddingLeft={4}
-            paddingRight={4}
-            {...rest}
-        >
-            {children}
-        </TextButtonWrapper>
-    );
-};
+export const TextButton: React.FC<PropsWithChildren<BaseButtonProps>> = React.forwardRef(
+    ({ children, ...rest }, ref) => {
+        return (
+            <TextButtonWrapper
+                ref={ref}
+                color="color-button-primary"
+                background="transparent"
+                paddingTop={1}
+                paddingBottom={1}
+                paddingLeft={4}
+                paddingRight={4}
+                {...rest}
+            >
+                {children}
+            </TextButtonWrapper>
+        );
+    }
+);

@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { BaseButton, BaseButtonProps } from '../base/base-button';
 import styled from 'styled-components';
+import React from 'react';
 
 type ButtonProps = {
     icon: ReactNode;
@@ -14,9 +15,10 @@ const IconButtonWrapper = styled(BaseButton)`
     }
 `;
 
-export const IconButton: React.FC<ButtonProps> = ({ icon, ...rest }) => {
+export const IconButton: React.FC<ButtonProps> = React.forwardRef(({ icon, ...rest }, ref) => {
     return (
         <IconButtonWrapper
+            ref={ref}
             padding={2}
             background="transparent"
             color="color-button-icon"
@@ -25,4 +27,4 @@ export const IconButton: React.FC<ButtonProps> = ({ icon, ...rest }) => {
             {...rest}
         />
     );
-};
+});
