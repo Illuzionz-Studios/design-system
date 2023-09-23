@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import React from 'react';
 
 const TextButtonWrapper = styled(BaseButton)`
-    transition: 0.1s ease-in-out;
+    transition: background 0.1s ease-in-out;
 
     &[aria-disabled='true'] {
         cursor: default;

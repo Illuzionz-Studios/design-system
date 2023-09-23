@@ -17,6 +17,7 @@ import {
     TextButton,
     TextField,
 } from '@illuzionz-studios/design-system';
+import { Variants, motion } from 'framer-motion';
 import Head from 'next/head';
 import { useState } from 'react';
 import { FaSearch, FaTimes } from 'react-icons/fa';
@@ -24,6 +25,22 @@ import { FaSearch, FaTimes } from 'react-icons/fa';
 type TestModalType = {
     onClose: () => void;
 } & React.HTMLAttributes<HTMLDivElement>;
+
+const loadInTop: Variants = {
+    hidden: {
+        opacity: 0,
+        y: -50,
+    },
+    show: {
+        opacity: 1,
+        y: 0,
+    },
+};
+
+const MotionTextField = motion(TextField);
+const MotionTextButton = motion(TextButton);
+const MotionButton = motion(Button);
+const MotionIconButton = motion(IconButton);
 
 const TestModal: React.FC<TestModalType> = ({ onClose }) => (
     <ModalLayout onClose={onClose}>
@@ -129,6 +146,83 @@ export default function Home() {
                                 checked={checked}
                                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => setChecked((prev) => !prev)}
                             />
+                        </Flex>
+
+                        <Flex direction="column" gap={3}>
+                            <Heading element="h2" variant="heading-2">
+                                Motion Testing
+                            </Heading>
+                            <Divider color="neutral100" />
+                            <motion.div
+                                initial={{
+                                    y: -50,
+                                }}
+                                animate={{
+                                    y: 0,
+                                }}
+                                transition={{
+                                    duration: 2,
+                                    delay: 1,
+                                }}
+                            >
+                                <MotionTextField
+                                    id="motion-test-field"
+                                    name="motion-test-field"
+                                    label="Test Field"
+                                    value={testFieldValue}
+                                    startIcon={<FaSearch color="var(--color-bg-primary)" />}
+                                    onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                                        setTestFieldValue(e.currentTarget.value)
+                                    }
+                                />
+                            </motion.div>
+
+                            <Flex direction="row" gap={2}>
+                                <MotionTextButton
+                                    initial={{
+                                        y: -50,
+                                    }}
+                                    animate={{
+                                        y: 0,
+                                    }}
+                                    transition={{
+                                        duration: 2,
+                                        delay: 1,
+                                    }}
+                                >
+                                    Test
+                                </MotionTextButton>
+
+                                <MotionButton
+                                    initial={{
+                                        y: -50,
+                                    }}
+                                    animate={{
+                                        y: 0,
+                                    }}
+                                    transition={{
+                                        duration: 2,
+                                        delay: 1,
+                                    }}
+                                    variant="secondary"
+                                >
+                                    Test
+                                </MotionButton>
+
+                                <MotionIconButton
+                                    initial={{
+                                        y: -50,
+                                    }}
+                                    animate={{
+                                        y: 0,
+                                    }}
+                                    transition={{
+                                        duration: 2,
+                                        delay: 1,
+                                    }}
+                                    icon={<FaSearch />}
+                                />
+                            </Flex>
                         </Flex>
                     </Flex>
                 </Container>

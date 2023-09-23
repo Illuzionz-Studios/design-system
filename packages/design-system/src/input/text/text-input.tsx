@@ -13,8 +13,7 @@ export type TextInputProps = {
     hasError?: boolean;
     startIcon?: ReactNode;
     endIcon?: ReactNode;
-    inputRef?: ForwardedRef<HTMLInputElement>;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+} & React.ComponentPropsWithRef<'input'>;
 
 const TextInputWrapper = styled(Box)`
     background: transparent;
@@ -53,8 +52,8 @@ const InputWrapper = styled(Flex)<{ $hasError?: boolean }>`
 /**
  * The raw styled text input
  */
-export const TextInput: React.FC<TextInputProps> = React.forwardRef<HTMLDivElement, TextInputProps>(
-    ({ className, value, hasError, startIcon, endIcon, disabled, inputRef, ...rest }, ref) => {
+export const TextInput: React.FC<TextInputProps> = React.forwardRef<HTMLInputElement, TextInputProps>(
+    ({ className, value, hasError, startIcon, endIcon, disabled, ...rest }, ref) => {
         const { id, name, error } = useField();
 
         let ariaDesc;
@@ -65,7 +64,6 @@ export const TextInput: React.FC<TextInputProps> = React.forwardRef<HTMLDivEleme
 
         return (
             <InputWrapper
-                ref={ref}
                 borderColor="color-textfield-border"
                 $hasError={hasError}
                 justifyContent="space-between"
@@ -79,7 +77,7 @@ export const TextInput: React.FC<TextInputProps> = React.forwardRef<HTMLDivEleme
                 )}
 
                 <TextInputWrapper
-                    ref={inputRef}
+                    ref={ref}
                     as="input"
                     className={classNames(styles.input, className)}
                     paddingTop={2}

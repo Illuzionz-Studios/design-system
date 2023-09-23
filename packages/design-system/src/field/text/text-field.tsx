@@ -11,26 +11,16 @@ import React from 'react';
 
 type FieldInputProps = {
     required?: boolean;
-    inputRef?: ForwardedRef<HTMLInputElement>;
 } & TextInputProps;
 
 /**
  * Expose all variables to a field
  */
 export const FieldInput: React.FC<FieldInputProps> = React.forwardRef<HTMLInputElement, FieldInputProps>(
-    ({ required, disabled, value, inputRef, ...rest }, ref) => {
+    ({ required, disabled, value, ...rest }, ref) => {
         const { id, name, error } = useField();
 
-        return (
-            <TextInput
-                inputRef={inputRef}
-                required={required}
-                value={value}
-                hasError={Boolean(error)}
-                id={id}
-                {...rest}
-            />
-        );
+        return <TextInput ref={ref} required={required} value={value} hasError={Boolean(error)} id={id} {...rest} />;
     }
 );
 
@@ -44,10 +34,10 @@ type TextFieldProps = {
 /**
  * Master component for a field of text
  */
-export const TextField: React.FC<TextFieldProps> = React.forwardRef<HTMLDivElement, TextFieldProps>(
-    ({ className, required, disabled, value, name, id, label, error, inputRef, ...rest }, ref) => {
+export const TextField: React.FC<TextFieldProps> = React.forwardRef<HTMLInputElement, TextFieldProps>(
+    ({ className, required, disabled, value, name, id, label, error, ...rest }, ref) => {
         return (
-            <Field ref={ref} id={id} name={name} error={error} width="100%">
+            <Field id={id} name={name} error={error} width="100%">
                 <Flex direction="column" gap={1}>
                     {label && (
                         <FieldLabel htmlFor={id}>
@@ -59,7 +49,7 @@ export const TextField: React.FC<TextFieldProps> = React.forwardRef<HTMLDivEleme
                             )}
                         </FieldLabel>
                     )}
-                    <FieldInput inputRef={inputRef} value={value} required={required} disabled={disabled} {...rest} />
+                    <FieldInput ref={ref} value={value} required={required} disabled={disabled} {...rest} />
                     <FieldError />
                 </Flex>
             </Field>
