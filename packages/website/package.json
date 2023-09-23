@@ -1,6 +1,6 @@
 {
     "name": "@illuzionz-studios/website",
-    "version": "0.0.26",
+    "version": "0.0.27",
     "private": true,
     "scripts": {
         "dev": "next dev -p 8002",
@@ -11,7 +11,7 @@
     "dependencies": {
         "@fontsource/inter": "^4.5.14",
         "@fontsource/poppins": "^4.5.10",
-        "@illuzionz-studios/design-system": "^0.0.26",
+        "@illuzionz-studios/design-system": "^0.0.27",
         "@next/font": "13.1.4",
         "@types/node": "18.11.18",
         "@types/react": "18.0.27",
