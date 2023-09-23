@@ -11,12 +11,13 @@ export type BoxProps<TElement extends keyof JSX.IntrinsicElements = 'div'> = Rea
         | 'zIndex'
         | 'overflow'
         | 'cursor'
-        | 'transition'
         | 'transform'
         | 'animation'
         | 'textAlign'
         | 'textTransform'
     > & {
+        cssTransition?: CSSProperties['transition'];
+
         // Colors
         background?: string;
         color?: string;
@@ -63,7 +64,7 @@ const transientProps: Partial<Record<keyof BoxProps, boolean>> = {
     zIndex: true,
     overflow: true,
     cursor: true,
-    transition: true,
+    cssTransition: true,
     transform: true,
     animation: true,
     textAlign: true,
@@ -164,7 +165,7 @@ export const Box = styled.div.withConfig({
     min-height: ${({ minHeight }) => minHeight};
 
     // Animation
-    transition: ${({ transition }) => transition};
+    transition: ${({ cssTransition }) => cssTransition};
     transform: ${({ transform }) => transform};
     animation: ${({ animation }) => animation};
 
